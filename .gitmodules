@@ -1,0 +1,66 @@
+[submodule "mb-rep"]
+	path = mb-rep
+	url = git://github.com/metaborg/mb-rep.git
+[submodule "mb-exec"]
+	path = mb-exec
+	url = git://github.com/metaborg/mb-exec.git
+[submodule "mb-exec-deps"]
+	path = mb-exec-deps
+	url = git://github.com/metaborg/mb-exec-deps.git
+[submodule "jsglr"]
+	path = jsglr
+	url = git://github.com/metaborg/jsglr.git
+[submodule "runtime-libraries"]
+	path = runtime-libraries
+	url = git://github.com/metaborg/runtime-libraries.git
+[submodule "spoofax"]
+	path = spoofax
+	url = git://github.com/metaborg/spoofax.git
+[submodule "spoofax-debug"]
+	path = spoofax-debug
+	url = git://github.com/metaborg/spoofax-debug.git
+[submodule "spoofax-deploy"]
+	path = spoofax-deploy
+	url = git://github.com/metaborg/spoofax-deploy.git
+[submodule "sdf"]
+	path = sdf
+	url = git://github.com/metaborg/sdf.git
+[submodule "rtg"]
+	path = rtg
+	url = git://github.com/metaborg/rtg.git
+[submodule "box"]
+	path = box
+	url = git://github.com/metaborg/box.git
+[submodule "esv"]
+	path = esv
+	url = git://github.com/metaborg/esv.git
+[submodule "stratego"]
+	path = stratego
+	url = git://github.com/metaborg/stratego.git
+[submodule "aster"]
+	path = aster
+	url = git://github.com/metaborg/aster.git
+[submodule "nabl"]
+	path = nabl
+	url = git://github.com/metaborg/nabl.git
+[submodule "ts"]
+	path = ts
+	url = git://github.com/metaborg/ts.git
+[submodule "spt"]
+	path = spt
+	url = git://github.com/metaborg/spt.git
+[submodule "tdl"]
+	path = tdl
+	url = git://github.com/metaborg/tdl.git
+[submodule "imp-patched"]
+	path = imp-patched
+	url = git://github.com/metaborg/imp-patched.git
+[submodule "java-front"]
+	path = java-front
+	url = git://github.com/metaborg/java-front.git
+[submodule "strategoxt"]
+	path = strategoxt
+	url = git://github.com/metaborg/strategoxt.git
+[submodule "strategoxt-cver"]
+	path = strategoxt-cver
+	url = git://github.com/metaborg/strategoxt.git
