@@ -1,66 +1,80 @@
 [submodule "mb-rep"]
 	path = mb-rep
 	url = git://github.com/metaborg/mb-rep.git
+	branch = master
 [submodule "mb-exec"]
 	path = mb-exec
 	url = git://github.com/metaborg/mb-exec.git
+	branch = master
 [submodule "mb-exec-deps"]
 	path = mb-exec-deps
 	url = git://github.com/metaborg/mb-exec-deps.git
+	branch = master
 [submodule "jsglr"]
 	path = jsglr
 	url = git://github.com/metaborg/jsglr.git
+	branch = master
 [submodule "runtime-libraries"]
 	path = runtime-libraries
 	url = git://github.com/metaborg/runtime-libraries.git
+	branch = master
 [submodule "spoofax"]
 	path = spoofax
 	url = git://github.com/metaborg/spoofax.git
+	branch = master
 [submodule "spoofax-debug"]
 	path = spoofax-debug
 	url = git://github.com/metaborg/spoofax-debug.git
+	branch = master
 [submodule "spoofax-deploy"]
 	path = spoofax-deploy
 	url = git://github.com/metaborg/spoofax-deploy.git
+	branch = master
 [submodule "sdf"]
 	path = sdf
 	url = git://github.com/metaborg/sdf.git
+	branch = master
 [submodule "rtg"]
 	path = rtg
 	url = git://github.com/metaborg/rtg.git
+	branch = master
 [submodule "box"]
 	path = box
 	url = git://github.com/metaborg/box.git
+	branch = master
 [submodule "esv"]
 	path = esv
 	url = git://github.com/metaborg/esv.git
+	branch = master
 [submodule "stratego"]
 	path = stratego
 	url = git://github.com/metaborg/stratego.git
+	branch = master
 [submodule "aster"]
 	path = aster
 	url = git://github.com/metaborg/aster.git
+	branch = master
 [submodule "nabl"]
 	path = nabl
 	url = git://github.com/metaborg/nabl.git
+	branch = master
 [submodule "ts"]
 	path = ts
 	url = git://github.com/metaborg/ts.git
+	branch = master
 [submodule "spt"]
 	path = spt
 	url = git://github.com/metaborg/spt.git
+	branch = master
 [submodule "tdl"]
 	path = tdl
 	url = git://github.com/metaborg/tdl.git
+	branch = master
 [submodule "imp-patched"]
 	path = imp-patched
 	url = git://github.com/metaborg/imp-patched.git
-[submodule "java-front"]
-	path = java-front
-	url = git://github.com/metaborg/java-front.git
+	branch = spoofax
 [submodule "strategoxt"]
 	path = strategoxt
 	url = git://github.com/metaborg/strategoxt.git
-[submodule "strategoxt-cver"]
-	path = strategoxt-cver
-	url = git://github.com/metaborg/strategoxt.git
+	branch = java-bootstrap
