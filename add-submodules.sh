@@ -18,6 +18,7 @@ git submodule add -b master git://github.com/metaborg/nabl.git nabl && git add n
 git submodule add -b master git://github.com/metaborg/ts.git ts && git add ts
 git submodule add -b master git://github.com/metaborg/spt.git spt && git add spt
 git submodule add -b master git://github.com/metaborg/tdl.git tdl && git add tld
+git submodule add -b master git://github.com/metaborg/spoofax-modelware.git modelware && git add modelware
 git submodule add -b spoofax git://github.com/metaborg/imp-patched.git imp-patched && git add imp-patched
 git submodule add -b java-bootstrap git://github.com/metaborg/strategoxt.git strategoxt && git add strategoxt
 
