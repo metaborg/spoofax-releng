@@ -17,7 +17,6 @@ git submodule deinit aster && git rm aster &&
 git submodule deinit nabl && git rm nabl &&
 git submodule deinit ts && git rm ts &&
 git submodule deinit spt && git rm spt &&
-git submodule deinit tdl && git rm tdl &&
 git submodule deinit imp-patched && git rm imp-patched &&
 git submodule deinit strategoxt && git rm strategoxt &&
 
