@@ -31,6 +31,7 @@ Confirm your Java installation and version by executing `java -version`.
 As preparation to build Spoofax, the sources need to be checked out from github. Clone this repository and sub-repositories by executing:
 
     git clone https://github.com/metaborg/spoofax-releng.git
+    cd spoofax-releng
     git submodule update --init --remote
     
 This can take a while because some repositories have a large history, and github cloning is fairly slow.
