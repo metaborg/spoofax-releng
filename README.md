@@ -4,11 +4,9 @@ This repository contains all sub-repositories, projects, and scripts required to
 
 ## Building Spoofax
 
-
-
 ### Requirements
 
-Building Spoofax requires Git 1.8.2 or higher, the Java Development Kit (JDK) 7 or higher, and Maven 3.2 or higher.
+Building Spoofax requires Git 1.8.2 or higher, the Java Development Kit (JDK) 7 or higher, and Maven 3.2 or higher. Building is only supported on the OSX platform at this moment.
 
 **Git. ** Git is required to check out the source code from our github repositories. Instructions on how to install Git for your platform can be found here: <http://git-scm.com/downloads>. If you run OSX and have [Homebrew](http://brew.sh/) installed, you can install git by executing `brew install git`. Be sure that your git version is 1.8.2 or higher, which you can confirm by executing `git version` on the command line.
 
@@ -30,21 +28,24 @@ Confirm your Java installation and version by executing `java -version`.
 
 ### Preparation
 
-As preparation to build Spoofax, the sources need to be checked out from github. Clone this repository by executing:
+As preparation to build Spoofax, the sources need to be checked out from github. Clone this repository and sub-repositories by executing:
 
     git clone https://github.com/metaborg/spoofax-releng.git
-    
-This just clones the contents of the repository, but not of the sub-repositories. To clone the sub-repositories, execute:
-
     git submodule update --init --remote
     
 This can take a while because some repositories have a large history, and github cloning is fairly slow.
 
-### Build
-
-To start the build, execute the following commands:
+We also need to download the strategoxt distribution, execute the following commands:
 
     cd spoofax-deploy/org.metaborg.maven.spoofax
+    ./update-strategoxt.sh
+    
+This will download the latest distribution from our build farm. You only need to run this command when an update to the distribution is required.
+
+### Build
+
+To start the build, just execute the build script:
+
     ./build.sh
     
 If this is the first time you are building Spoofax, Maven will have to download a lot of Maven and Eclipse plugins. These are cached in the local Maven repository, making subsequent builds faster.
@@ -55,10 +56,16 @@ The main artefact of a Spoofax build is the Eclipse update site which can be use
 
     spoofax-deploy/org.strategoxt.imp.updatesite/target/site
 
-You can add this local update site to Eclipse by navigating to 
+You can add this local update site to Eclipse by navigating to:
 
     Help -> Install New Software... -> Add -> Local
     
 Then it can be used to install Spoofax, like a regular update site. After a restart of Eclipse, Spoofax can be tested.
 
 Alternatively, all projects can be imported into an Eclipse workspace, and a new Eclipse instance can be started to test Spoofax.
+
+## TODO
+
+* Custom version numbering. Currently the timestamp is used as qualifier, but a more deterministic qualifier like the number of commits should be used.
+* Linux support
+* Windows support
