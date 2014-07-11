@@ -86,3 +86,7 @@
 	path = shrike
 	url = git@github.com:metaborg/shrike.git
 	branch = mvn-build
+[submodule "spoofax-sunshine"]
+	path = spoofax-sunshine
+	url = git@github.com:metaborg/spoofax-sunshine.git
+	branch = mvn-build
