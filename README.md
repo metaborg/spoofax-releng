@@ -23,11 +23,13 @@ Execute the following commands:
     cd ..
     cd org.metaborg.maven.build.spoofax.sunshine
     ./build.sh
-    
+
+
 The Spoofax update site can be found at:
 
     spoofax-deploy/org.strategoxt.imp.updatesite/target/site
-    
+
+
 The Sunshine JAR can be found at:
 
     spoofax-sunshine/org.spoofax.sunshine/target/org.metaborg.sunshine-<VERSION>.jar
@@ -42,7 +44,7 @@ Linux and OSX are supported, Windows is currently not supported.
 
 ## Requirements
 
-Building anything requires Git 1.8.2 or higher, the Java Development Kit (JDK) 7 or higher, Maven 3.2 or higher, and wget. Building is only supported on the OSX platform at this moment.
+Building anything requires Git 1.8.2 or higher, the Java Development Kit (JDK) 7 or higher, Maven 3.2 or higher, and wget.
 
 **Git.** Git is required to check out the source code from our GitHub repositories. Instructions on how to install Git for your platform can be found here: <http://git-scm.com/downloads>. If you run OSX and have [Homebrew](http://brew.sh/) installed, you can install Git by executing `brew install git`. Be sure that your Git version is 1.8.2 or higher, which you can confirm by executing `git version` on the command line.
 
