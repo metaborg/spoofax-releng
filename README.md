@@ -24,11 +24,9 @@ Execute the following commands:
     cd org.metaborg.maven.build.spoofax.sunshine
     ./build.sh
 
-
 The Spoofax update site can be found at:
 
     spoofax-deploy/org.strategoxt.imp.updatesite/target/site
-
 
 The Sunshine JAR can be found at:
 
@@ -156,7 +154,32 @@ The result is an executable JAR which includes all dependencies, which can be fo
 
 # Setting up Eclipse for Spoofax development
 
-TODO
+If you are developing a project that is included in Spoofax it is recommended to set up Eclipse for Spoofax development to test changes to the project.
+
+**Install Eclipse.** First, [download and install Eclipse](http://www.eclipse.org/downloads/packages/eclipse-standard-44/lunar). Make sure that you are running Java 7 or higher.
+
+TODO: set common Eclipse options
+
+**Install m2eclipse plugin.** Install the m2eclipse plugin into Eclipse from the following update site: <http://download.eclipse.org/technology/m2e/releases>. m2e runs Maven inside Eclipse. 
+
+After installing the plugin into Eclipse and restarting, go into the Eclipse preferences and click on the Maven item. TODO: checkboxes on first screen. Click on the `Discovery` item and click on `Open Catalog`, a new window will appear where connectors can be installed. Install the following connectors (TODO: use proper names):
+
+* Tycho
+* Build helper
+* JDT compiler updates
+
+TODO: other options?
+
+
+There are two ways to set up Eclipse for Spoofax development:
+
+1. Install Spoofax into Eclipse, check out projects that you want to work on, and import them into Eclipse.
+2. Check out all projects, build them with Maven, and import them into Eclipse.
+
+The first approach is recommended because it is not possible to build languages inside Eclipse in the second approach, and it also requires less projects to be checked out. If you are not working on languages and want full control over all of Spoofax's components, use the second approach.
+
+TODO: explain how to do both approaches
+TODO: explain how to start a new Eclipse instance
 
 # Build qualifier
 
