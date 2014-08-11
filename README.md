@@ -218,6 +218,18 @@ git submodule update --init --remote
 
 Alternatively, you can check out all repositories yourself for more control. 
 
+Eclipse plugins for EMF and GMF must be installed to be able to run the modelware component. Either close the modelware projects:
+
+* ca.ecliptical.gmf.ant_1.1.0.20090717033226
+* org.spoofax.modelware.emf
+* org.spoofax.modelware.gmf
+
+or install the following plugins from the Eclipse releases update site:
+
+* Graphical Modeling Framework (GMF) Runtime SDK
+* EMF - Eclipse Modeling Framework SDK
+* EMF Compare Core SDK
+
 Since it is not possible to build languages inside Eclipse (because Spoofax is not installed), the languages have to be built using Maven. Follow the build description at the top of this file to build everything with Maven. 
 
 Now you can work on Java components such as the terms or Stratego interpreter projects. If a language was changed, for example by pulling in changes from git, just run the Maven builds again. The advantage of this approach is that Spoofax is completely built from your Eclipse workspace, without any dependencies on an installed Spoofax version.
