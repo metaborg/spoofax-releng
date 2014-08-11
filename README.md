@@ -44,9 +44,11 @@ Linux and OSX are supported, Windows is currently not supported.
 
 Building anything requires Git 1.8.2 or higher, the Java Development Kit (JDK) 7 or higher, Maven 3.2 or higher, and wget.
 
-**Git.** Git is required to check out the source code from our GitHub repositories. Instructions on how to install Git for your platform can be found here: <http://git-scm.com/downloads>. If you run OSX and have [Homebrew](http://brew.sh/) installed, you can install Git by executing `brew install git`. Be sure that your Git version is 1.8.2 or higher, which you can confirm by executing `git version` on the command line.
+**Git.**
+Git is required to check out the source code from our GitHub repositories. Instructions on how to install Git for your platform can be found here: <http://git-scm.com/downloads>. If you run OSX and have [Homebrew](http://brew.sh/) installed, you can install Git by executing `brew install git`. Be sure that your Git version is 1.8.2 or higher, which you can confirm by executing `git version` on the command line.
 
-**JDK.** Spoofax is programmed in Java 7, so an installation of Java 7 is required. Maven, the build system that we use, requires the JDK to be installed, the JRE is not enough. The latest JDK can be downloaded and installed from: <http://www.oracle.com/technetwork/java/javase/downloads/index.html>.
+**JDK.**
+Spoofax is programmed in Java 7, so an installation of Java 7 is required. Maven, the build system that we use, requires the JDK to be installed, the JRE is not enough. The latest JDK can be downloaded and installed from: <http://www.oracle.com/technetwork/java/javase/downloads/index.html>.
 
 On OSX, it can be a bit tricky to use the installed JDK, because Apple by default installs JRE 6. To check which version of Java you are running, execute the `java -version` command. If this tells you that the Java version is 1.7 or higher, everything is fine. If not, the Java version can be set with a command. If you have installed JDK 7, execute:
 
@@ -60,9 +62,11 @@ Note that setting the Java version this way is not permanent. Whenever a new ter
 
 Confirm your Java installation and version by executing `java -version`.
 
-**Maven.** Maven is the build system used to build Spoofax, we require Maven 3.2 or higher. Download links and installation instructions can be found at <http://maven.apache.org/download.cgi>. Maven can be easily installed on OSX with Homebrew by executing `brew install maven`. Confirm the installation and version by running `mvn --version`.
+**Maven.**
+Maven is the build system used to build Spoofax, we require Maven 3.2 or higher. Download links and installation instructions can be found at <http://maven.apache.org/download.cgi>. Maven can be easily installed on OSX with Homebrew by executing `brew install maven`. Confirm the installation and version by running `mvn --version`.
 
-**wget.** Wget is installed from homebrew with `brew install wget`.
+**wget.**
+Wget is installed from homebrew with `brew install wget`.
 
 ## Preparation
 
@@ -156,20 +160,40 @@ The result is an executable JAR which includes all dependencies, which can be fo
 
 If you are developing a project that is included in Spoofax it is recommended to set up Eclipse for Spoofax development to test changes to the project.
 
-**Install Eclipse.** First, [download and install Eclipse](http://www.eclipse.org/downloads/packages/eclipse-standard-44/lunar). Make sure that you are running Java 7 or higher.
+**Install Eclipse**
 
-TODO: set common Eclipse options
+First, [download and install Eclipse](http://www.eclipse.org/downloads/packages/eclipse-standard-44/lunar). Make sure that you are running Java 7 or higher. There are many preferences in Eclipse that should be on by default, but are not for some reason. Go to the Eclipse preferences and enable these options:
 
-**Install m2eclipse plugin.** Install the m2eclipse plugin into Eclipse from the following update site: <http://download.eclipse.org/technology/m2e/releases>. m2e runs Maven inside Eclipse. 
+* General
+	* Keep next/previous editor, view and perspectives dialog open
+* General -> Startup and Shutdown
+	* Refresh workspace on startup 
+* General -> Workspace
+	* Refresh using native hooks or polling
 
-After installing the plugin into Eclipse and restarting, go into the Eclipse preferences and click on the Maven item. TODO: checkboxes on first screen. Click on the `Discovery` item and click on `Open Catalog`, a new window will appear where connectors can be installed. Install the following connectors (TODO: use proper names):
+**Install m2eclipse plugin**
 
-* Tycho
-* Build helper
-* JDT compiler updates
+The m2eclipse plugin runs Maven inside Eclipse. It is required when working on Java components of Spoofax, because Maven manages the dependencies between projects and on third party libraries. If you will never work on Java components of Spoofax, you can skip installing this plugin. Install the m2eclipse plugin into Eclipse from the following update site: <http://download.eclipse.org/technology/m2e/releases>.
 
-TODO: other options?
+After installing the plugin into Eclipse and restarting, go into the Eclipse preferences and click on the `Maven` item. Disable the following checkboxes:
 
+* Do not automatically update dependencies from remote repositories
+
+Enable the following checkboxes:
+
+* Download Artifact Sources
+* Download Artifact JavaDoc
+
+Now click on the `Discovery` item and click on `Open Catalog`, a new window will appear where connectors can be installed. Check the following connectors and press Finish:
+
+* buildhelper
+* Tycho Configurator
+* m2e-jdt-compiler
+* m2e-egit
+
+Four Eclipse plugins will be installed which hook Maven plugins into Eclipse. Finish the installation and restart Eclipse. Maven will now run inside Eclipse on projects with the Maven nature. It will automatically resolve dependencies to projects in the workspace and download third party dependencies.
+
+**Setting up for Spoofax development**
 
 There are two ways to set up Eclipse for Spoofax development:
 
@@ -178,8 +202,33 @@ There are two ways to set up Eclipse for Spoofax development:
 
 The first approach is recommended because it is not possible to build languages inside Eclipse in the second approach, and it also requires less projects to be checked out. If you are not working on languages and want full control over all of Spoofax's components, use the second approach.
 
-TODO: explain how to do both approaches
-TODO: explain how to start a new Eclipse instance
+*First approach*
+
+Install the nightly Spoofax into Eclipse from update site: <http://download.spoofax.org/update/nightly/>, and restart Eclipse. Clone the <https://github.com/metaborg/spoofax.git> repository and import the `org.strategoxt.imp.runtime` project into Eclipse. Check out any projects you want to work on and import them into Eclipse.
+
+*Second approach*
+
+Check out the spoofax-releng repository: 
+
+```
+git clone https://github.com/metaborg/spoofax-releng.git
+cd spoofax-releng
+git submodule update --init --remote
+```
+
+Alternatively, you can check out all repositories yourself for more control. 
+
+Since it is not possible to build languages inside Eclipse (because Spoofax is not installed), the languages have to be built using Maven. Follow the build description at the top of this file to build everything with Maven. 
+
+Now you can work on Java components such as the terms or Stratego interpreter projects. If a language was changed, for example by pulling in changes from git, just run the Maven builds again. The advantage of this approach is that Spoofax is completely built from your Eclipse workspace, without any dependencies on an installed Spoofax version.
+
+**Testing changes**
+
+To test changes to the Spoofax Eclipse plugin, a new Eclipse instance needs to be started. Press the little down arrow next to the bug icon (next to the play icon) and choose `Spoofax (no assertions)` to start a new Eclipse instance that contains your changes. To run with assertions enabled, use the `Spoofax (with assertions)` item, this will also provide more debugging output in the console.
+
+# Adding a new project to the build
+
+TODO
 
 # Build qualifier
 
@@ -205,8 +254,3 @@ An increasing reproducible qualifier can be created by getting the commit count 
 All build scripts accept two arguments to change the behaviour of Maven. The `MAVEN_OPTS` environment variable can be set with the `-e opts`, which is used to set the JVM arguments that Maven uses. The `-a args` sets extra arguments that are passed to Maven.
 
 For example, to increase memory and enable parallel builds with 4 cores, pass the following arguments: `-e "-server -Xmx512m -Xms512m -Xss16m" -a "-T 4"`.
-
-# TODO
-
-* Windows support
-* Troubleshooting/FAQ
