@@ -11,26 +11,19 @@ Execute the following commands:
     git clone https://github.com/metaborg/spoofax-releng.git
     cd spoofax-releng
     git submodule update --init --remote
-    
-    cd spoofax-deploy/org.metaborg.maven.build.strategoxt
-    ./build.sh -u
-    cd ..
-    cd org.metaborg.maven.build.java
-    ./build.sh
-    cd ..
-    cd org.metaborg.maven.build.spoofax.eclipse
-    ./build.sh
-    cd ..
-    cd org.metaborg.maven.build.spoofax.sunshine
-    ./build.sh
+    ./build-all
 
-The Spoofax update site can be found at:
+The Eclipse update site can be found at:
 
     spoofax-deploy/org.strategoxt.imp.updatesite/target/site
 
 The Sunshine JAR can be found at:
 
     spoofax-sunshine/org.spoofax.sunshine/target/org.metaborg.sunshine-<VERSION>.jar
+    
+The libraries JAR can be found at:
+
+    spoofax-deploy/org.metaborg.maven.build.spoofax.libs/target/org.metaborg.maven.build.spoofax.libs-<VERSION>.jar
     
 # Detailed build description
 
