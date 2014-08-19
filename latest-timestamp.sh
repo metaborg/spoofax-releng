@@ -5,7 +5,7 @@ set -u
 
 max=0
 for dir in $(find * -maxdepth 0 -type d); do 
-	ts=$(git --no-pager log -1 --format=%at $dir)
+	ts=$(cd $dir; git --no-pager log -1 --format=%at; cd ..)
 	if (($ts > $max)); then
 		max=$ts
 	fi
