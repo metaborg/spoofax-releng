@@ -51,7 +51,7 @@ If you have installed JDK 8, execute:
 
     export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
     
-Note that setting the Java version this way is not permanent. Whenever a new terminal is opened the command needs to be executed again.
+Note that setting the Java version this way is not permanent. To make it permanent, add that line to `~/.profile` (create the file if it does not exist) which will execute it whenever a new terminal is opened.
 
 Confirm your Java installation and version by executing `java -version`.
 
