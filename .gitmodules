@@ -90,3 +90,7 @@
 	path = spoofax-sunshine
 	url = https://github.com/metaborg/spoofax-sunshine.git
 	branch = master
+ [submodule "spoofax-benchmark"]
+ 	path = spoofax-benchmark
+ 	url = https://github.com/metaborg/spoofax-benchmark.git
+ 	branch = master
