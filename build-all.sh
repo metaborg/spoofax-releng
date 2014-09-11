@@ -10,7 +10,6 @@ QUALIFIER=$(./latest-timestamp.sh)
 
 echo "Using qualifier $QUALIFIER"
 
-
 ./spoofax-deploy/org.metaborg.maven.build.strategoxt/build.sh
 ./spoofax-deploy/org.metaborg.maven.build.java/build.sh -q $QUALIFIER
 ./spoofax-deploy/org.metaborg.maven.build.spoofax.eclipse/build.sh -q $QUALIFIER
