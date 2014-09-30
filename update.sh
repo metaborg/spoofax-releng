@@ -3,4 +3,4 @@
 set -e
 set -u
 
-git submodule update --init --remote --recursive --depth 1
+git submodule update --init --remote --recursive
