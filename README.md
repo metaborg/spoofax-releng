@@ -41,7 +41,7 @@ Building anything requires Git 1.8.2 or higher, the Java Development Kit (JDK) 7
 Git is required to check out the source code from our GitHub repositories. Instructions on how to install Git for your platform can be found here: <http://git-scm.com/downloads>. If you run OSX and have [Homebrew](http://brew.sh/) installed, you can install Git by executing `brew install git`. Be sure that your Git version is 1.8.2 or higher, which you can confirm by executing `git version` on the command line.
 
 **JDK.**
-Spoofax is programmed in Java 7, so an installation of Java 7 is required. Maven, the build system that we use, requires the JDK to be installed, the JRE is not enough. The latest JDK can be downloaded and installed from: <http://www.oracle.com/technetwork/java/javase/downloads/index.html>. JDK 8 cannot be used to build Spoofax, a JDK 7 installation is required!
+Spoofax is programmed in Java 7, so an installation of Java 7 is required. Maven, the build system that we use, requires the JDK to be installed, the JRE is not enough. The latest JDK can be downloaded and installed from: <http://www.oracle.com/technetwork/java/javase/downloads/index.html>. __JDK 8 cannot be used to build Spoofax, a JDK 7 installation is required!__
 
 On OSX, it can be a bit tricky to use the installed JDK, because Apple by default installs JRE 6. To check which version of Java you are running, execute the `java -version` command. If this tells you that the Java version is 1.7 or higher, everything is fine. If not, the Java version can be set with a command. After you have installed JDK 7, execute:
 
