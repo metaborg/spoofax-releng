@@ -41,17 +41,13 @@ Building anything requires Git 1.8.2 or higher, the Java Development Kit (JDK) 7
 Git is required to check out the source code from our GitHub repositories. Instructions on how to install Git for your platform can be found here: <http://git-scm.com/downloads>. If you run OSX and have [Homebrew](http://brew.sh/) installed, you can install Git by executing `brew install git`. Be sure that your Git version is 1.8.2 or higher, which you can confirm by executing `git version` on the command line.
 
 **JDK.**
-Spoofax is programmed in Java 7, so an installation of Java 7 is required. Maven, the build system that we use, requires the JDK to be installed, the JRE is not enough. The latest JDK can be downloaded and installed from: <http://www.oracle.com/technetwork/java/javase/downloads/index.html>.
+Spoofax is programmed in Java 7, so an installation of Java 7 is required. Maven, the build system that we use, requires the JDK to be installed, the JRE is not enough. The latest JDK can be downloaded and installed from: <http://www.oracle.com/technetwork/java/javase/downloads/index.html>. JDK 8 cannot be used to build Spoofax, a JDK 7 installation is required!
 
-On OSX, it can be a bit tricky to use the installed JDK, because Apple by default installs JRE 6. To check which version of Java you are running, execute the `java -version` command. If this tells you that the Java version is 1.7 or higher, everything is fine. If not, the Java version can be set with a command. If you have installed JDK 7, execute:
+On OSX, it can be a bit tricky to use the installed JDK, because Apple by default installs JRE 6. To check which version of Java you are running, execute the `java -version` command. If this tells you that the Java version is 1.7 or higher, everything is fine. If not, the Java version can be set with a command. After you have installed JDK 7, execute:
 
     export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
     
-If you have installed JDK 8, execute:
-
-    export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-    
-Note that setting the Java version this way is not permanent. To make it permanent, add that line to `~/.profile` (create the file if it does not exist) which will execute it whenever a new terminal is opened.
+Note that setting the Java version this way is not permanent. To make it permanent, add that line to `~/.profile` (create the file if it does not exist) or the equivalent for your OS/shell, which will execute it whenever a new terminal is opened.
 
 Confirm your Java installation and version by executing `java -version`.
 
@@ -59,7 +55,7 @@ Confirm your Java installation and version by executing `java -version`.
 Maven is the build system used to build Spoofax, we require Maven 3.2 or higher. Download links and installation instructions can be found at <http://maven.apache.org/download.cgi>. Maven can be easily installed on OSX with Homebrew by executing `brew install maven`. Confirm the installation and version by running `mvn --version`.
 
 **wget.**
-Wget is installed from homebrew with `brew install wget`.
+Wget is required to download the StrategoXT distribution. On OSX it can be installed from homebrew with `brew install wget`.
 
 ## Preparation
 
@@ -155,9 +151,9 @@ TODO
 
 # Build qualifier
 
-Eclipse and Maven use the `major.minor.patch-qualifier` scheme for versioning. The major, minor, and patch parts of the version are set in each project, but the -qualifier part is not. In Maven, `-SNAPSHOT` is used as qualifier for replaceable (nightly) builds, but it is not required to replace `SNAPSHOT` with an actual number. However, in Eclipse, a plugin can only be upgraded if its version is higher than the installed version, so each build needs a higher qualifier number to be able to update installed plugins.
+Eclipse and Maven use the `major.minor.patch-qualifier` scheme for versioning. The major, minor, and patch parts of the version are set in each project, but the -qualifier part is not. In Maven, `-SNAPSHOT` is used as qualifier for replaceable (nightly) builds, but it is not required to replace `SNAPSHOT` with an actual number. However, in Eclipse, a plugin can only be upgraded if its version is higher than the installed version, so each build needs an increasing qualifier to be able to update installed plugins.
 
-By default, the Java and Spoofax build scripts use the current date and time as qualifier but can be modified by passing the `-q number` parameter as follows:
+By default, the Java and Spoofax build scripts use the current date and time as qualifier. The `build-all.sh` script uses the `latest-timestamp.sh` script to get the timestamp of the latest commit in any of the submodules, which is reproducable because it only produces an increased timestamp if an actual change has been made. The qualifier for the Java and Spoofax build scripts can also be set manually by passing the `-q number` parameter as follows:
 
 ```
 QUALIFIER=12345
@@ -170,7 +166,6 @@ cd org.metaborg.maven.build.spoofax.eclipse
 ./build.sh -q $QUALIFIER
 cd ..
 ```
-An increasing reproducible qualifier can be created by getting the commit count of all git repositories with `git rev-list HEAD --count` and summing them.
 
 # Additional arguments
 
