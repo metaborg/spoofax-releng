@@ -23,6 +23,7 @@ echo "Using qualifier $QUALIFIER"
 ./spoofax-deploy/org.metaborg.maven.build.strategoxt/build.sh $MAVEN_ARGS
 ./spoofax-deploy/org.metaborg.maven.build.java/build.sh -q $QUALIFIER $MAVEN_ARGS
 ./spoofax-deploy/org.metaborg.maven.build.spoofax.eclipse/build.sh -q $QUALIFIER $MAVEN_ARGS
+./spoofax-deploy/org.metaborg.maven.build.parentpoms/build.sh $MAVEN_ARGS
 ./spoofax-deploy/org.metaborg.maven.build.spoofax.libs/build.sh $MAVEN_ARGS
 ./spoofax-deploy/org.metaborg.maven.build.spoofax.sunshine/build.sh $MAVEN_ARGS
 ./spoofax-deploy/org.metaborg.maven.build.spoofax.benchmark/build.sh $MAVEN_ARGS
