@@ -7,7 +7,7 @@ set -u
 # Set build vars
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 QUALIFIER=$(./latest-timestamp.sh)
-MAVEN_ARGS='-a "-nsu"'
+MAVEN_ARGS='-a "-P=!add-metaborg-repositories"'
 
 
 # Clean up local repository.
