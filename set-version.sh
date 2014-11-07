@@ -10,7 +10,7 @@ ECLIPSE_NEW_VERSION=$(echo $MAVEN_NEW_VERSION | sed s/-SNAPSHOT/.qualifier/)
 echo "Old version: $MAVEN_OLD_VERSION / $ECLIPSE_OLD_VERSION"
 echo "New version: $MAVEN_NEW_VERSION / $ECLIPSE_NEW_VERSION"
 
-#MAVEN_OPTS="-Xmx512m -Xms512m -Xss16m" mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=$MAVEN_NEW_VERSION -Dproperties=metaborg-version -Dartifacts=org.metaborg.maven.parent
+mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=$MAVEN_NEW_VERSION -Dproperties=metaborg-version -Dartifacts=org.metaborg.maven.parent
 
 function sedeasy {
   sed -i '' "s/$(echo $1 | sed -e 's/\([[\/.*]\|\]\)/\\&/g')/$(echo $2 | sed -e 's/[\/&]/\\&/g')/g" $3

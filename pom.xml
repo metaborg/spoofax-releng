@@ -11,6 +11,7 @@
 		<module>spoofax-deploy/org.metaborg.maven.build.strategoxt</module>
 		<module>spoofax-deploy/org.metaborg.maven.build.java</module>
 		<module>spoofax-deploy/org.metaborg.maven.build.spoofax.eclipse</module>
+		<module>spoofax-deploy/org.metaborg.maven.build.spoofax.libs</module>
 		<module>spoofax-deploy/org.metaborg.maven.build.parentpoms</module>
 		<module>spoofax-deploy/org.metaborg.maven.build.spoofax.testrunner</module>
 
