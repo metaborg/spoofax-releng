@@ -73,8 +73,28 @@
 [submodule "strategoxt"]
 	path = strategoxt
 	url = https://github.com/metaborg/strategoxt.git
-	branch = java-bootstrap
+	branch = spoofax-release
 [submodule "modelware"]
 	path = modelware
 	url = https://github.com/metaborg/spoofax-modelware.git
+	branch = spoofax-release
+[submodule "lpg-runtime"]
+	path = lpg-runtime
+	url = https://github.com/metaborg/lpg-runtime.git
+	branch = spoofax-release
+[submodule "shrike"]
+	path = shrike
+	url = https://github.com/metaborg/shrike.git
+	branch = spoofax-release
+[submodule "spoofax-sunshine"]
+	path = spoofax-sunshine
+	url = https://github.com/metaborg/spoofax-sunshine.git
+	branch = spoofax-release
+ [submodule "spoofax-benchmark"]
+ 	path = spoofax-benchmark
+ 	url = https://github.com/metaborg/spoofax-benchmark.git
+ 	branch = spoofax-release
+[submodule "dynsem"]
+	path = dynsem
+	url = https://github.com/metaborg/dynsem.git
 	branch = spoofax-release
