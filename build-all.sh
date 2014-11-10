@@ -1,13 +1,44 @@
 #!/usr/bin/env bash
 
-set -e
-set -u
+set -eu
+
+
+# Parse input
+while getopts ":q:a:dr" opt; do
+  case $opt in
+    q)
+      INPUT_ECLIPSE_QUALIFIER=$OPTARG
+      ;;
+    a)
+      INPUT_MAVEN_ARGS=$OPTARG
+      ;;
+    d)
+      INPUT_MAVEN_DEPLOY="-d"
+      ;;
+    r)
+      INPUT_MAVEN_RELEASE=",release"
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+    :)
+      echo "Option -$OPTARG requires an argument." >&2
+      exit 2
+      ;;
+  esac
+done
 
 
 # Set build vars
+MAVEN_ARGS=${INPUT_MAVEN_ARGS:-""}
+MAVEN_DEPLOY=${INPUT_MAVEN_DEPLOY:-""}
+MAVEN_RELEASE=${INPUT_MAVEN_RELEASE:-""}
+MAVEN_ARGS="--no-snapshot-updates --activate-profiles=!add-metaborg-repositories$MAVEN_RELEASE"
+
+ECLIPSE_QUALIFIER=${INPUT_ECLIPSE_QUALIFIER:-$(./latest-timestamp.sh)}
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-QUALIFIER=$(./latest-timestamp.sh)
-MAVEN_ARGS='-a "-P=!add-metaborg-repositories"'
 
 
 # Clean up local repository.
@@ -18,24 +49,26 @@ rm -rf ~/.m2/repository/.cache/tycho/org.metaborg*
 
 
 # Run the Maven builds.
-echo "Using qualifier $QUALIFIER"
+echo "Using Eclipse qualifier '$ECLIPSE_QUALIFIER'."
 
-./spoofax-deploy/org.metaborg.maven.build.strategoxt/build.sh $MAVEN_ARGS
-./spoofax-deploy/org.metaborg.maven.build.java/build.sh -q $QUALIFIER $MAVEN_ARGS
-./spoofax-deploy/org.metaborg.maven.build.spoofax.eclipse/build.sh -q $QUALIFIER $MAVEN_ARGS
-./spoofax-deploy/org.metaborg.maven.build.parentpoms/build.sh $MAVEN_ARGS
-./spoofax-deploy/org.metaborg.maven.build.spoofax.libs/build.sh $MAVEN_ARGS
-./spoofax-deploy/org.metaborg.maven.build.spoofax.testrunner/build.sh $MAVEN_ARGS
+./spoofax-deploy/org.metaborg.maven.build.strategoxt/build.sh -a "$MAVEN_ARGS" $MAVEN_DEPLOY
+./spoofax-deploy/org.metaborg.maven.build.java/build.sh -q $ECLIPSE_QUALIFIER -a "$MAVEN_ARGS" $MAVEN_DEPLOY
+./spoofax-deploy/org.metaborg.maven.build.spoofax.eclipse/build.sh -q $ECLIPSE_QUALIFIER -a "$MAVEN_ARGS" $MAVEN_DEPLOY
+./spoofax-deploy/org.metaborg.maven.build.parentpoms/build.sh -a "$MAVEN_ARGS" $MAVEN_DEPLOY
+./spoofax-deploy/org.metaborg.maven.build.spoofax.libs/build.sh -a "$MAVEN_ARGS" $MAVEN_DEPLOY
+./spoofax-deploy/org.metaborg.maven.build.spoofax.testrunner/build.sh -a "$MAVEN_ARGS" $MAVEN_DEPLOY
 
 
 # Echo locations of build products.
 ECLIPSE_UPDATE_SITE="$DIR/spoofax-deploy/org.strategoxt.imp.updatesite/target/site"
 SUNSHINE_JAR_ARRAY=("$DIR/spoofax-sunshine/org.spoofax.sunshine/target/org.metaborg.sunshine-"*"-shaded.jar")
 BENCHMARK_JAR_ARRAY=("$DIR/spoofax-benchmark/org.metaborg.spoofax.benchmark.cmd/target/org.metaborg.spoofax.benchmark.cmd-"*".jar")
+TESTRUNNER_JAR_ARRAY=("$DIR/spt/org.metaborg.spoofax.testrunner.cmd/target/org.metaborg.spoofax.testrunner.cmd-"*".jar")
 LIBRARIES_JAR_ARRAY=("$DIR/spoofax-deploy/org.metaborg.maven.build.spoofax.libs/target/org.metaborg.maven.build.spoofax.libs-"*".jar")
 
 echo "Build products"
 echo "Eclipse update site: $ECLIPSE_UPDATE_SITE"
 echo "Sunshine JAR: ${SUNSHINE_JAR_ARRAY[0]}"
 echo "Benchmark JAR: ${BENCHMARK_JAR_ARRAY[0]}"
+echo "Test runner JAR: ${TESTRUNNER_JAR_ARRAY[0]}"
 echo "Libraries JAR: ${LIBRARIES_JAR_ARRAY[0]}"
