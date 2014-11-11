@@ -10,7 +10,7 @@ while getopts ":q:a:dr" opt; do
       INPUT_ECLIPSE_QUALIFIER=$OPTARG
       ;;
     a)
-      INPUT_MAVEN_ARGS=$OPTARG
+      INPUT_MAVEN_EXTRA_ARGS=$OPTARG
       ;;
     d)
       INPUT_MAVEN_DEPLOY="-d"
@@ -31,10 +31,10 @@ done
 
 
 # Set build vars
-MAVEN_ARGS=${INPUT_MAVEN_ARGS:-""}
+MAVEN_EXTRA_ARGS=${INPUT_MAVEN_EXTRA_ARGS:-""}
 MAVEN_DEPLOY=${INPUT_MAVEN_DEPLOY:-""}
 MAVEN_RELEASE=${INPUT_MAVEN_RELEASE:-""}
-MAVEN_ARGS="--no-snapshot-updates --activate-profiles=!add-metaborg-repositories$MAVEN_RELEASE"
+MAVEN_ARGS="--no-snapshot-updates --activate-profiles=!add-metaborg-repositories$MAVEN_RELEASE $MAVEN_EXTRA_ARGS"
 
 ECLIPSE_QUALIFIER=${INPUT_ECLIPSE_QUALIFIER:-$(./latest-timestamp.sh)}
 
@@ -55,8 +55,8 @@ echo "Using Eclipse qualifier '$ECLIPSE_QUALIFIER'."
 ./spoofax-deploy/org.metaborg.maven.build.java/build.sh -q $ECLIPSE_QUALIFIER -a "$MAVEN_ARGS" $MAVEN_DEPLOY
 ./spoofax-deploy/org.metaborg.maven.build.spoofax.eclipse/build.sh -q $ECLIPSE_QUALIFIER -a "$MAVEN_ARGS" $MAVEN_DEPLOY
 ./spoofax-deploy/org.metaborg.maven.build.parentpoms/build.sh -a "$MAVEN_ARGS" $MAVEN_DEPLOY
-./spoofax-deploy/org.metaborg.maven.build.spoofax.libs/build.sh -a "$MAVEN_ARGS" $MAVEN_DEPLOY
-./spoofax-deploy/org.metaborg.maven.build.spoofax.testrunner/build.sh -a "$MAVEN_ARGS" $MAVEN_DEPLOY
+./spoofax-deploy/org.metaborg.maven.build.spoofax.libs/build.sh -a "$MAVEN_ARGS"
+./spoofax-deploy/org.metaborg.maven.build.spoofax.testrunner/build.sh -a "$MAVEN_ARGS"
 
 
 # Echo locations of build products.
