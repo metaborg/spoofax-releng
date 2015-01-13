@@ -17,11 +17,11 @@
 [submodule "runtime-libraries"]
 	path = runtime-libraries
 	url = https://github.com/metaborg/runtime-libraries.git
-	branch = master
+	branch = strategoxt-maven-build
 [submodule "spoofax"]
 	path = spoofax
 	url = https://github.com/metaborg/spoofax.git
-	branch = master
+	branch = strategoxt-maven-build
 [submodule "spoofax-debug"]
 	path = spoofax-debug
 	url = https://github.com/metaborg/spoofax-debug.git
