@@ -29,7 +29,7 @@
 [submodule "spoofax-deploy"]
 	path = spoofax-deploy
 	url = https://github.com/metaborg/spoofax-deploy.git
-	branch = master
+	branch = strategoxt-maven-build
 [submodule "sdf"]
 	path = sdf
 	url = https://github.com/metaborg/sdf.git
@@ -73,7 +73,7 @@
 [submodule "strategoxt"]
 	path = strategoxt
 	url = https://github.com/metaborg/strategoxt.git
-	branch = java-bootstrap
+	branch = strategoxt-maven-build
 [submodule "modelware"]
 	path = modelware
 	url = https://github.com/metaborg/spoofax-modelware.git

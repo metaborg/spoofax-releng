@@ -51,7 +51,7 @@ rm -rf ~/.m2/repository/.cache/tycho/org.metaborg*
 # Run the Maven builds.
 echo "Using Eclipse qualifier '$ECLIPSE_QUALIFIER'."
 
-./spoofax-deploy/org.metaborg.maven.build.strategoxt/build.sh -a "$MAVEN_ARGS" $MAVEN_DEPLOY
+./strategoxt/strategoxt/build.sh
 ./spoofax-deploy/org.metaborg.maven.build.java/build.sh -q $ECLIPSE_QUALIFIER -a "$MAVEN_ARGS" $MAVEN_DEPLOY
 ./spoofax-deploy/org.metaborg.maven.build.spoofax.eclipse/build.sh -q $ECLIPSE_QUALIFIER -a "$MAVEN_ARGS" $MAVEN_DEPLOY
 ./spoofax-deploy/org.metaborg.maven.build.parentpoms/build.sh -a "$MAVEN_ARGS" $MAVEN_DEPLOY
