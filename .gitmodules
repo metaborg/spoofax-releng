@@ -1,100 +1,100 @@
 [submodule "mb-rep"]
-	path = mb-rep
-	url = https://github.com/metaborg/mb-rep.git
-	branch = master
+  path = mb-rep
+  url = https://github.com/metaborg/mb-rep.git
+  branch = master
 [submodule "mb-exec"]
-	path = mb-exec
-	url = https://github.com/metaborg/mb-exec.git
-	branch = master
+  path = mb-exec
+  url = https://github.com/metaborg/mb-exec.git
+  branch = master
 [submodule "mb-exec-deps"]
-	path = mb-exec-deps
-	url = https://github.com/metaborg/mb-exec-deps.git
-	branch = master
+  path = mb-exec-deps
+  url = https://github.com/metaborg/mb-exec-deps.git
+  branch = master
 [submodule "jsglr"]
-	path = jsglr
-	url = https://github.com/metaborg/jsglr.git
-	branch = master
+  path = jsglr
+  url = https://github.com/metaborg/jsglr.git
+  branch = master
 [submodule "runtime-libraries"]
-	path = runtime-libraries
-	url = https://github.com/metaborg/runtime-libraries.git
-	branch = strategoxt-maven-build
+  path = runtime-libraries
+  url = https://github.com/metaborg/runtime-libraries.git
+  branch = master
 [submodule "spoofax"]
-	path = spoofax
-	url = https://github.com/metaborg/spoofax.git
-	branch = strategoxt-maven-build
+  path = spoofax
+  url = https://github.com/metaborg/spoofax.git
+  branch = master
 [submodule "spoofax-debug"]
-	path = spoofax-debug
-	url = https://github.com/metaborg/spoofax-debug.git
-	branch = master
+  path = spoofax-debug
+  url = https://github.com/metaborg/spoofax-debug.git
+  branch = master
 [submodule "spoofax-deploy"]
-	path = spoofax-deploy
-	url = https://github.com/metaborg/spoofax-deploy.git
-	branch = strategoxt-maven-build
+  path = spoofax-deploy
+  url = https://github.com/metaborg/spoofax-deploy.git
+  branch = master
 [submodule "sdf"]
-	path = sdf
-	url = https://github.com/metaborg/sdf.git
-	branch = master
+  path = sdf
+  url = https://github.com/metaborg/sdf.git
+  branch = master
 [submodule "rtg"]
-	path = rtg
-	url = https://github.com/metaborg/rtg.git
-	branch = master
+  path = rtg
+  url = https://github.com/metaborg/rtg.git
+  branch = master
 [submodule "box"]
-	path = box
-	url = https://github.com/metaborg/box.git
-	branch = master
+  path = box
+  url = https://github.com/metaborg/box.git
+  branch = master
 [submodule "esv"]
-	path = esv
-	url = https://github.com/metaborg/esv.git
-	branch = master
+  path = esv
+  url = https://github.com/metaborg/esv.git
+  branch = master
 [submodule "stratego"]
-	path = stratego
-	url = https://github.com/metaborg/stratego.git
-	branch = master
+  path = stratego
+  url = https://github.com/metaborg/stratego.git
+  branch = master
 [submodule "aster"]
-	path = aster
-	url = https://github.com/metaborg/aster.git
-	branch = master
+  path = aster
+  url = https://github.com/metaborg/aster.git
+  branch = master
 [submodule "nabl"]
-	path = nabl
-	url = https://github.com/metaborg/nabl.git
-	branch = master
+  path = nabl
+  url = https://github.com/metaborg/nabl.git
+  branch = master
 [submodule "ts"]
-	path = ts
-	url = https://github.com/metaborg/ts.git
-	branch = master
+  path = ts
+  url = https://github.com/metaborg/ts.git
+  branch = master
 [submodule "spt"]
-	path = spt
-	url = https://github.com/metaborg/spt.git
-	branch = master
+  path = spt
+  url = https://github.com/metaborg/spt.git
+  branch = master
 [submodule "imp-patched"]
-	path = imp-patched
-	url = https://github.com/metaborg/imp-patched.git
-	branch = spoofax
+  path = imp-patched
+  url = https://github.com/metaborg/imp-patched.git
+  branch = spoofax
 [submodule "strategoxt"]
-	path = strategoxt
-	url = https://github.com/metaborg/strategoxt.git
-	branch = maven-build
+  path = strategoxt
+  url = https://github.com/metaborg/strategoxt.git
+  branch = java-bootstrap
 [submodule "modelware"]
-	path = modelware
-	url = https://github.com/metaborg/spoofax-modelware.git
-	branch = master
+  path = modelware
+  url = https://github.com/metaborg/spoofax-modelware.git
+  branch = master
 [submodule "lpg-runtime"]
-	path = lpg-runtime
-	url = https://github.com/metaborg/lpg-runtime.git
-	branch = master
+  path = lpg-runtime
+  url = https://github.com/metaborg/lpg-runtime.git
+  branch = master
 [submodule "shrike"]
-	path = shrike
-	url = https://github.com/metaborg/shrike.git
-	branch = master
+  path = shrike
+  url = https://github.com/metaborg/shrike.git
+  branch = master
 [submodule "spoofax-sunshine"]
-	path = spoofax-sunshine
-	url = https://github.com/metaborg/spoofax-sunshine.git
-	branch = master
+  path = spoofax-sunshine
+  url = https://github.com/metaborg/spoofax-sunshine.git
+  branch = master
  [submodule "spoofax-benchmark"]
- 	path = spoofax-benchmark
- 	url = https://github.com/metaborg/spoofax-benchmark.git
- 	branch = master
+  path = spoofax-benchmark
+  url = https://github.com/metaborg/spoofax-benchmark.git
+  branch = master
 [submodule "dynsem"]
-	path = dynsem
-	url = https://github.com/metaborg/dynsem.git
-	branch = master
+  path = dynsem
+  url = https://github.com/metaborg/dynsem.git
+  branch = master
