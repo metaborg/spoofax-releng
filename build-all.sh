@@ -4,7 +4,7 @@ set -eu
 
 
 # Parse input
-while getopts ":q:a:sdr" opt; do
+while getopts ":q:a:stdr" opt; do
   case $opt in
     q)
       INPUT_ECLIPSE_QUALIFIER=$OPTARG
@@ -14,6 +14,9 @@ while getopts ":q:a:sdr" opt; do
       ;;
     s)
       INPUT_BUILD_STRATEGOXT="true"
+      ;;
+    t)
+      INPUT_SKIP_STRATEGOXT_TESTS="-t"
       ;;
     d)
       INPUT_MAVEN_DEPLOY="-d"
@@ -44,6 +47,7 @@ MAVEN_ARGS_NO_DISABLE="--no-snapshot-updates $MAVEN_RELEASE $MAVEN_EXTRA_ARGS"
 
 ECLIPSE_QUALIFIER=${INPUT_ECLIPSE_QUALIFIER:-$(./latest-timestamp.sh)}
 BUILD_STRATEGOXT=${INPUT_BUILD_STRATEGOXT:-"false"}
+SKIP_STRATEGOXT_TESTS=${INPUT_SKIP_STRATEGOXT_TESTS:-""}
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -60,7 +64,7 @@ echo "Using Eclipse qualifier '$ECLIPSE_QUALIFIER'."
 
 if [ $BUILD_STRATEGOXT == "true" ] ; then
   echo "Building StrategoXT locally..."
-  ./strategoxt/strategoxt/build.sh -a "$MAVEN_ARGS_NO_DISABLE" $MAVEN_DEPLOY
+  ./strategoxt/strategoxt/build.sh -a "$MAVEN_ARGS_NO_DISABLE" $MAVEN_DEPLOY $SKIP_STRATEGOXT_TESTS
 else
   echo "Downloading StrategoXT, use -s argument to build StrategoXT locally"
   ./strategoxt/strategoxt/download.sh
