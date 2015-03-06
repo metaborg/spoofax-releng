@@ -4,7 +4,7 @@ set -eu
 
 
 # Parse input
-while getopts ":q:a:dr" opt; do
+while getopts ":q:a:stdr" opt; do
   case $opt in
     q)
       INPUT_ECLIPSE_QUALIFIER=$OPTARG
@@ -12,11 +12,18 @@ while getopts ":q:a:dr" opt; do
     a)
       INPUT_MAVEN_EXTRA_ARGS=$OPTARG
       ;;
+    s)
+      INPUT_BUILD_STRATEGOXT="true"
+      ;;
+    t)
+      INPUT_SKIP_STRATEGOXT_TESTS="-t"
+      ;;
     d)
       INPUT_MAVEN_DEPLOY="-d"
       ;;
     r)
-      INPUT_MAVEN_RELEASE=",release"
+      INPUT_MAVEN_ADD_RELEASE=",release"
+      INPUT_MAVEN_RELEASE="--activate-profiles=release"
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
@@ -33,10 +40,14 @@ done
 # Set build vars
 MAVEN_EXTRA_ARGS=${INPUT_MAVEN_EXTRA_ARGS:-""}
 MAVEN_DEPLOY=${INPUT_MAVEN_DEPLOY:-""}
+MAVEN_ADD_RELEASE=${INPUT_MAVEN_ADD_RELEASE:-""}
 MAVEN_RELEASE=${INPUT_MAVEN_RELEASE:-""}
-MAVEN_ARGS="--no-snapshot-updates --activate-profiles=!add-metaborg-repositories$MAVEN_RELEASE $MAVEN_EXTRA_ARGS"
+MAVEN_ARGS="--no-snapshot-updates --activate-profiles=!add-metaborg-repositories$MAVEN_ADD_RELEASE $MAVEN_EXTRA_ARGS"
+MAVEN_ARGS_NO_DISABLE="--no-snapshot-updates $MAVEN_RELEASE $MAVEN_EXTRA_ARGS"
 
 ECLIPSE_QUALIFIER=${INPUT_ECLIPSE_QUALIFIER:-$(./latest-timestamp.sh)}
+BUILD_STRATEGOXT=${INPUT_BUILD_STRATEGOXT:-"false"}
+SKIP_STRATEGOXT_TESTS=${INPUT_SKIP_STRATEGOXT_TESTS:-""}
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -51,7 +62,13 @@ rm -rf ~/.m2/repository/.cache/tycho/org.metaborg*
 # Run the Maven builds.
 echo "Using Eclipse qualifier '$ECLIPSE_QUALIFIER'."
 
-./spoofax-deploy/org.metaborg.maven.build.strategoxt/build.sh -a "$MAVEN_ARGS" $MAVEN_DEPLOY
+if [ $BUILD_STRATEGOXT == "true" ] ; then
+  echo "Building StrategoXT locally..."
+  ./strategoxt/strategoxt/build.sh -a "$MAVEN_ARGS_NO_DISABLE" $MAVEN_DEPLOY $SKIP_STRATEGOXT_TESTS
+else
+  echo "Downloading StrategoXT, use -s argument to build StrategoXT locally"
+  ./strategoxt/strategoxt/download.sh
+fi
 ./spoofax-deploy/org.metaborg.maven.build.java/build.sh -q $ECLIPSE_QUALIFIER -a "$MAVEN_ARGS" $MAVEN_DEPLOY
 ./spoofax-deploy/org.metaborg.maven.build.spoofax.eclipse/build.sh -q $ECLIPSE_QUALIFIER -a "$MAVEN_ARGS" $MAVEN_DEPLOY
 ./spoofax-deploy/org.metaborg.maven.build.parentpoms/build.sh -a "$MAVEN_ARGS" $MAVEN_DEPLOY
