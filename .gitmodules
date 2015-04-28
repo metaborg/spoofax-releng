@@ -98,3 +98,7 @@
   path = dynsem
   url = git@github.com:metaborg/dynsem.git
   branch = master
+[submodule "spoofax-maven"]
+  path = spoofax-maven
+  url = git@github.com:metaborg/spoofax-maven.git
+  branch = master
