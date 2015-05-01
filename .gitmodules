@@ -97,7 +97,7 @@
 [submodule "dynsem"]
   path = dynsem
   url = git@github.com:metaborg/dynsem.git
-  branch = new-build-system
+  branch = new-build-system-stable
 [submodule "spoofax-maven"]
   path = spoofax-maven
   url = git@github.com:metaborg/spoofax-maven.git
