@@ -13,7 +13,7 @@
 [submodule "jsglr"]
   path = jsglr
   url = https://github.com/metaborg/jsglr.git
-  branch = master
+  branch = new-completions
 [submodule "runtime-libraries"]
   path = runtime-libraries
   url = https://github.com/metaborg/runtime-libraries.git
@@ -21,7 +21,7 @@
 [submodule "spoofax"]
   path = spoofax
   url = https://github.com/metaborg/spoofax.git
-  branch = new-spoofax-plugin
+  branch = new-completions
 [submodule "spoofax-debug"]
   path = spoofax-debug
   url = https://github.com/metaborg/spoofax-debug.git
@@ -33,7 +33,7 @@
 [submodule "sdf"]
   path = sdf
   url = https://github.com/metaborg/sdf.git
-  branch = new-spoofax-plugin
+  branch = new-completions
 [submodule "rtg"]
   path = rtg
   url = https://github.com/metaborg/rtg.git
