@@ -65,7 +65,7 @@
 [submodule "spt"]
   path = spt
   url = https://github.com/metaborg/spt.git
-  branch = master
+  branch = ignore-errors-regions
 [submodule "imp-patched"]
   path = imp-patched
   url = https://github.com/metaborg/imp-patched.git
