@@ -29,7 +29,7 @@
 [submodule "spoofax-deploy"]
   path = spoofax-deploy
   url = https://github.com/metaborg/spoofax-deploy.git
-  branch = master
+  branch = in4303
 [submodule "sdf"]
   path = sdf
   url = https://github.com/metaborg/sdf.git
