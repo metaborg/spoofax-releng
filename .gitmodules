@@ -17,7 +17,7 @@
 [submodule "runtime-libraries"]
   path = runtime-libraries
   url = https://github.com/metaborg/runtime-libraries.git
-  branch = master
+  branch = new-build-system
 [submodule "spoofax"]
   path = spoofax
   url = https://github.com/metaborg/spoofax.git
