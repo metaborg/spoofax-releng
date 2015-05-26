@@ -13,7 +13,7 @@
 [submodule "jsglr"]
   path = jsglr
   url = https://github.com/metaborg/jsglr.git
-  branch = master
+  branch = new-spoofax-plugin
 [submodule "runtime-libraries"]
   path = runtime-libraries
   url = https://github.com/metaborg/runtime-libraries.git
@@ -89,11 +89,11 @@
 [submodule "spoofax-sunshine"]
   path = spoofax-sunshine
   url = https://github.com/metaborg/spoofax-sunshine.git
-  branch = master
+  branch = new-spoofax-plugin
  [submodule "spoofax-benchmark"]
   path = spoofax-benchmark
   url = https://github.com/metaborg/spoofax-benchmark.git
-  branch = master
+  branch = new-spoofax-plugin
 [submodule "dynsem"]
   path = dynsem
   url = https://github.com/metaborg/dynsem.git
