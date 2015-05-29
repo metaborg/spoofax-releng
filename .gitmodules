@@ -1,7 +1,7 @@
 [submodule "mb-rep"]
   path = mb-rep
   url = https://github.com/metaborg/mb-rep.git
-  branch = new-spoofax-plugin
+  branch = new-spoofax-plugin-new-build
 [submodule "mb-exec"]
   path = mb-exec
   url = https://github.com/metaborg/mb-exec.git
@@ -65,7 +65,7 @@
 [submodule "spt"]
   path = spt
   url = https://github.com/metaborg/spt.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
 [submodule "imp-patched"]
   path = imp-patched
   url = https://github.com/metaborg/imp-patched.git
