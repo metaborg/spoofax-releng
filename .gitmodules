@@ -102,3 +102,7 @@
   path = spoofax-maven
   url = https://github.com/metaborg/spoofax-maven.git
   branch = master
+[submodule "spoofax-eclipse"]
+	path = spoofax-eclipse
+	url = https://github.com/metaborg/spoofax-eclipse.git
+	branch = master
