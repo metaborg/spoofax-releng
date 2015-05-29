@@ -77,7 +77,7 @@
 [submodule "modelware"]
   path = modelware
   url = https://github.com/metaborg/spoofax-modelware.git
-  branch = master
+  branch = new-spoofax-plugin-new-build
 [submodule "lpg-runtime"]
   path = lpg-runtime
   url = https://github.com/metaborg/lpg-runtime.git
