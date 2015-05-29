@@ -17,11 +17,11 @@
 [submodule "runtime-libraries"]
   path = runtime-libraries
   url = https://github.com/metaborg/runtime-libraries.git
-  branch = new-spoofax-plugin
+  branch = new-spoofax-plugin-new-build
 [submodule "spoofax"]
   path = spoofax
   url = https://github.com/metaborg/spoofax.git
-  branch = new-spoofax-plugin
+  branch = new-spoofax-plugin-new-build
 [submodule "spoofax-debug"]
   path = spoofax-debug
   url = https://github.com/metaborg/spoofax-debug.git
@@ -29,11 +29,11 @@
 [submodule "spoofax-deploy"]
   path = spoofax-deploy
   url = https://github.com/metaborg/spoofax-deploy.git
-  branch = new-spoofax-plugin
+  branch = new-spoofax-plugin-new-build
 [submodule "sdf"]
   path = sdf
   url = https://github.com/metaborg/sdf.git
-  branch = new-spoofax-plugin
+  branch = new-spoofax-plugin-new-build
 [submodule "rtg"]
   path = rtg
   url = https://github.com/metaborg/rtg.git
@@ -45,11 +45,11 @@
 [submodule "esv"]
   path = esv
   url = https://github.com/metaborg/esv.git
-  branch = new-spoofax-plugin
+  branch = new-spoofax-plugin-new-build
 [submodule "stratego"]
   path = stratego
   url = https://github.com/metaborg/stratego.git
-  branch = new-spoofax-plugin
+  branch = new-spoofax-plugin-new-build
 [submodule "aster"]
   path = aster
   url = https://github.com/metaborg/aster.git
@@ -57,15 +57,15 @@
 [submodule "nabl"]
   path = nabl
   url = https://github.com/metaborg/nabl.git
-  branch = new-spoofax-plugin
+  branch = new-spoofax-plugin-new-build
 [submodule "ts"]
   path = ts
   url = https://github.com/metaborg/ts.git
-  branch = new-spoofax-plugin
+  branch = new-spoofax-plugin-new-build
 [submodule "spt"]
   path = spt
   url = https://github.com/metaborg/spt.git
-  branch = new-spoofax-plugin
+  branch = new-spoofax-plugin-new-build
 [submodule "imp-patched"]
   path = imp-patched
   url = https://github.com/metaborg/imp-patched.git
@@ -97,4 +97,4 @@
 [submodule "dynsem"]
   path = dynsem
   url = https://github.com/metaborg/dynsem.git
-  branch = new-spoofax-plugin
+  branch = new-spoofax-plugin-new-build
