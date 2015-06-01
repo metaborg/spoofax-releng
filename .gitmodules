@@ -6,10 +6,6 @@
   path = mb-exec
   url = https://github.com/metaborg/mb-exec.git
   branch = master
-[submodule "mb-exec-deps"]
-  path = mb-exec-deps
-  url = https://github.com/metaborg/mb-exec-deps.git
-  branch = master
 [submodule "jsglr"]
   path = jsglr
   url = https://github.com/metaborg/jsglr.git
@@ -22,10 +18,6 @@
   path = spoofax
   url = https://github.com/metaborg/spoofax.git
   branch = new-spoofax-plugin-new-build
-[submodule "spoofax-debug"]
-  path = spoofax-debug
-  url = https://github.com/metaborg/spoofax-debug.git
-  branch = master
 [submodule "spoofax-deploy"]
   path = spoofax-deploy
   url = https://github.com/metaborg/spoofax-deploy.git
@@ -66,10 +58,6 @@
   path = spt
   url = https://github.com/metaborg/spt.git
   branch = new-spoofax-plugin
-[submodule "imp-patched"]
-  path = imp-patched
-  url = https://github.com/metaborg/imp-patched.git
-  branch = spoofax
 [submodule "strategoxt"]
   path = strategoxt
   url = https://github.com/metaborg/strategoxt.git
@@ -78,14 +66,6 @@
   path = modelware
   url = https://github.com/metaborg/spoofax-modelware.git
   branch = new-spoofax-plugin-new-build
-[submodule "lpg-runtime"]
-  path = lpg-runtime
-  url = https://github.com/metaborg/lpg-runtime.git
-  branch = master
-[submodule "shrike"]
-  path = shrike
-  url = https://github.com/metaborg/shrike.git
-  branch = master
 [submodule "spoofax-sunshine"]
   path = spoofax-sunshine
   url = https://github.com/metaborg/spoofax-sunshine.git
