@@ -5,11 +5,11 @@
 [submodule "mb-exec"]
   path = mb-exec
   url = https://github.com/metaborg/mb-exec.git
-  branch = master
+  branch = new-spoofax-plugin-new-build
 [submodule "jsglr"]
   path = jsglr
   url = https://github.com/metaborg/jsglr.git
-  branch = new-spoofax-plugin
+  branch = new-spoofax-plugin-new-build
 [submodule "runtime-libraries"]
   path = runtime-libraries
   url = https://github.com/metaborg/runtime-libraries.git
@@ -57,11 +57,11 @@
 [submodule "spt"]
   path = spt
   url = https://github.com/metaborg/spt.git
-  branch = new-spoofax-plugin
+  branch = new-spoofax-plugin-new-build
 [submodule "strategoxt"]
   path = strategoxt
   url = https://github.com/metaborg/strategoxt.git
-  branch = java-bootstrap
+  branch = new-spoofax-plugin-new-build
 [submodule "modelware"]
   path = modelware
   url = https://github.com/metaborg/spoofax-modelware.git
@@ -73,7 +73,7 @@
  [submodule "spoofax-benchmark"]
   path = spoofax-benchmark
   url = https://github.com/metaborg/spoofax-benchmark.git
-  branch = new-spoofax-plugin
+  branch = new-spoofax-plugin-new-build
 [submodule "dynsem"]
   path = dynsem
   url = https://github.com/metaborg/dynsem.git
