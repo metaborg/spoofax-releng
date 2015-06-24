@@ -1,31 +1,31 @@
 [submodule "mb-rep"]
   path = mb-rep
   url = https://github.com/metaborg/mb-rep.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
 [submodule "mb-exec"]
   path = mb-exec
   url = https://github.com/metaborg/mb-exec.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
 [submodule "jsglr"]
   path = jsglr
   url = https://github.com/metaborg/jsglr.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
 [submodule "runtime-libraries"]
   path = runtime-libraries
   url = https://github.com/metaborg/runtime-libraries.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
 [submodule "spoofax"]
   path = spoofax
   url = https://github.com/metaborg/spoofax.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
 [submodule "spoofax-deploy"]
   path = spoofax-deploy
   url = https://github.com/metaborg/spoofax-deploy.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
 [submodule "sdf"]
   path = sdf
   url = https://github.com/metaborg/sdf.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
 [submodule "rtg"]
   path = rtg
   url = https://github.com/metaborg/rtg.git
@@ -37,11 +37,11 @@
 [submodule "esv"]
   path = esv
   url = https://github.com/metaborg/esv.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
 [submodule "stratego"]
   path = stratego
   url = https://github.com/metaborg/stratego.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
 [submodule "aster"]
   path = aster
   url = https://github.com/metaborg/aster.git
@@ -49,35 +49,35 @@
 [submodule "nabl"]
   path = nabl
   url = https://github.com/metaborg/nabl.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
 [submodule "ts"]
   path = ts
   url = https://github.com/metaborg/ts.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
 [submodule "spt"]
   path = spt
   url = https://github.com/metaborg/spt.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
 [submodule "strategoxt"]
   path = strategoxt
   url = https://github.com/metaborg/strategoxt.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
 [submodule "modelware"]
   path = modelware
   url = https://github.com/metaborg/spoofax-modelware.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
 [submodule "spoofax-sunshine"]
   path = spoofax-sunshine
   url = https://github.com/metaborg/spoofax-sunshine.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
  [submodule "spoofax-benchmark"]
   path = spoofax-benchmark
   url = https://github.com/metaborg/spoofax-benchmark.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
 [submodule "dynsem"]
   path = dynsem
   url = https://github.com/metaborg/dynsem.git
-  branch = new-spoofax-plugin-new-build
+  branch = new-spoofax-plugin
 [submodule "spoofax-maven"]
   path = spoofax-maven
   url = https://github.com/metaborg/spoofax-maven.git
