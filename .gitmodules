@@ -21,7 +21,7 @@
 [submodule "spoofax"]
   path = spoofax
   url = https://github.com/metaborg/spoofax.git
-  branch = strsepcomp
+  branch = master
 [submodule "spoofax-debug"]
   path = spoofax-debug
   url = https://github.com/metaborg/spoofax-debug.git
