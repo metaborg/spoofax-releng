@@ -9,7 +9,7 @@
 [submodule "mb-exec-deps"]
   path = mb-exec-deps
   url = https://github.com/metaborg/mb-exec-deps.git
-  branch = master
+  branch = strsepcomp
 [submodule "jsglr"]
   path = jsglr
   url = https://github.com/metaborg/jsglr.git
