@@ -17,7 +17,7 @@
 [submodule "runtime-libraries"]
   path = runtime-libraries
   url = https://github.com/metaborg/runtime-libraries.git
-  branch = master
+  branch = strsepcomp
 [submodule "spoofax"]
   path = spoofax
   url = https://github.com/metaborg/spoofax.git
@@ -33,19 +33,19 @@
 [submodule "sdf"]
   path = sdf
   url = https://github.com/metaborg/sdf.git
-  branch = master
+  branch = strsepcomp
 [submodule "rtg"]
   path = rtg
   url = https://github.com/metaborg/rtg.git
-  branch = master
+  branch = strsepcomp
 [submodule "box"]
   path = box
   url = https://github.com/metaborg/box.git
-  branch = master
+  branch = strsepcomp
 [submodule "esv"]
   path = esv
   url = https://github.com/metaborg/esv.git
-  branch = master
+  branch = strsepcomp
 [submodule "stratego"]
   path = stratego
   url = https://github.com/metaborg/stratego.git
@@ -53,19 +53,19 @@
 [submodule "aster"]
   path = aster
   url = https://github.com/metaborg/aster.git
-  branch = master
+  branch = strsepcomp
 [submodule "nabl"]
   path = nabl
   url = https://github.com/metaborg/nabl.git
-  branch = master
+  branch = strsepcomp
 [submodule "ts"]
   path = ts
   url = https://github.com/metaborg/ts.git
-  branch = master
+  branch = strsepcomp
 [submodule "spt"]
   path = spt
   url = https://github.com/metaborg/spt.git
-  branch = master
+  branch = strsepcomp
 [submodule "imp-patched"]
   path = imp-patched
   url = https://github.com/metaborg/imp-patched.git
@@ -97,4 +97,4 @@
 [submodule "dynsem"]
   path = dynsem
   url = https://github.com/metaborg/dynsem.git
-  branch = master
+  branch = strsepcomp
