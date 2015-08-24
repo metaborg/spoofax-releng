@@ -1,7 +1,7 @@
 [submodule "mb-rep"]
   path = mb-rep
   url = https://github.com/metaborg/mb-rep.git
-  branch = master
+  branch = strsepcomp
 [submodule "mb-exec"]
   path = mb-exec
   url = https://github.com/metaborg/mb-exec.git
