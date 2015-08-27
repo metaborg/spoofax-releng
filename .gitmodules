@@ -1,7 +1,7 @@
 [submodule "mb-rep"]
 	path = mb-rep
 	url = https://github.com/metaborg/mb-rep.git
-	branch = spoofax-release
+	branch = hotfix/1.4.1
 [submodule "mb-exec"]
 	path = mb-exec
 	url = https://github.com/metaborg/mb-exec.git
@@ -29,7 +29,7 @@
 [submodule "spoofax-deploy"]
 	path = spoofax-deploy
 	url = https://github.com/metaborg/spoofax-deploy.git
-	branch = spoofax-release
+	branch = hotfix/1.4.1
 [submodule "sdf"]
 	path = sdf
 	url = https://github.com/metaborg/sdf.git
@@ -65,7 +65,7 @@
 [submodule "spt"]
 	path = spt
 	url = https://github.com/metaborg/spt.git
-	branch = spoofax-release
+	branch = hotfix/1.4.1
 [submodule "imp-patched"]
 	path = imp-patched
 	url = https://github.com/metaborg/imp-patched.git
@@ -89,7 +89,7 @@
 [submodule "spoofax-sunshine"]
 	path = spoofax-sunshine
 	url = https://github.com/metaborg/spoofax-sunshine.git
-	branch = spoofax-release
+	branch = hotfix/1.4.1
  [submodule "spoofax-benchmark"]
  	path = spoofax-benchmark
  	url = https://github.com/metaborg/spoofax-benchmark.git
