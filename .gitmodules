@@ -73,7 +73,7 @@
 [submodule "strategoxt"]
 	path = strategoxt
 	url = https://github.com/metaborg/strategoxt.git
-	branch = spoofax-release
+	branch = hotfix/1.4.1
 [submodule "modelware"]
 	path = modelware
 	url = https://github.com/metaborg/spoofax-modelware.git
