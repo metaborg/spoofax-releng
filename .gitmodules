@@ -26,14 +26,6 @@
   path = sdf
   url = https://github.com/metaborg/sdf.git
   branch = new-spoofax-plugin
-[submodule "rtg"]
-  path = rtg
-  url = https://github.com/metaborg/rtg.git
-  branch = master
-[submodule "box"]
-  path = box
-  url = https://github.com/metaborg/box.git
-  branch = master
 [submodule "esv"]
   path = esv
   url = https://github.com/metaborg/esv.git
@@ -42,10 +34,6 @@
   path = stratego
   url = https://github.com/metaborg/stratego.git
   branch = new-spoofax-plugin
-[submodule "aster"]
-  path = aster
-  url = https://github.com/metaborg/aster.git
-  branch = master
 [submodule "nabl"]
   path = nabl
   url = https://github.com/metaborg/nabl.git
