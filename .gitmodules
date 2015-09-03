@@ -19,7 +19,7 @@
   url = https://github.com/metaborg/spoofax.git
   branch = new-spoofax-plugin
 [submodule "spoofax-deploy"]
-  path = spoofax-deploy
+	path = releng
   url = https://github.com/metaborg/spoofax-deploy.git
   branch = new-spoofax-plugin
 [submodule "sdf"]
