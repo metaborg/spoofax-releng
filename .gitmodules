@@ -18,8 +18,8 @@
   path = spoofax
   url = https://github.com/metaborg/spoofax.git
   branch = new-spoofax-plugin
-[submodule "spoofax-deploy"]
-	path = releng
+[submodule "releng"]
+  path = releng
   url = https://github.com/metaborg/spoofax-deploy.git
   branch = new-spoofax-plugin
 [submodule "sdf"]
@@ -50,10 +50,6 @@
   path = strategoxt
   url = https://github.com/metaborg/strategoxt.git
   branch = new-spoofax-plugin
-[submodule "modelware"]
-  path = modelware
-  url = https://github.com/metaborg/spoofax-modelware.git
-  branch = new-spoofax-plugin
 [submodule "spoofax-sunshine"]
   path = spoofax-sunshine
   url = https://github.com/metaborg/spoofax-sunshine.git
@@ -71,6 +67,6 @@
   url = https://github.com/metaborg/spoofax-maven.git
   branch = master
 [submodule "spoofax-eclipse"]
-	path = spoofax-eclipse
-	url = https://github.com/metaborg/spoofax-eclipse.git
-	branch = master
+  path = spoofax-eclipse
+  url = https://github.com/metaborg/spoofax-eclipse.git
+  branch = master
