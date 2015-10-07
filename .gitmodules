@@ -18,22 +18,14 @@
   path = spoofax
   url = https://github.com/metaborg/spoofax.git
   branch = new-completions
-[submodule "spoofax-deploy"]
-  path = spoofax-deploy
+[submodule "releng"]
+  path = releng
   url = https://github.com/metaborg/spoofax-deploy.git
   branch = new-spoofax-plugin
 [submodule "sdf"]
   path = sdf
   url = https://github.com/metaborg/sdf.git
   branch = new-completions
-[submodule "rtg"]
-  path = rtg
-  url = https://github.com/metaborg/rtg.git
-  branch = master
-[submodule "box"]
-  path = box
-  url = https://github.com/metaborg/box.git
-  branch = master
 [submodule "esv"]
   path = esv
   url = https://github.com/metaborg/esv.git
@@ -42,10 +34,6 @@
   path = stratego
   url = https://github.com/metaborg/stratego.git
   branch = new-spoofax-plugin
-[submodule "aster"]
-  path = aster
-  url = https://github.com/metaborg/aster.git
-  branch = master
 [submodule "nabl"]
   path = nabl
   url = https://github.com/metaborg/nabl.git
@@ -61,10 +49,6 @@
 [submodule "strategoxt"]
   path = strategoxt
   url = https://github.com/metaborg/strategoxt.git
-  branch = new-spoofax-plugin
-[submodule "modelware"]
-  path = modelware
-  url = https://github.com/metaborg/spoofax-modelware.git
   branch = new-spoofax-plugin
 [submodule "spoofax-sunshine"]
   path = spoofax-sunshine
