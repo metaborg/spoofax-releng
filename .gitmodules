@@ -5,7 +5,7 @@
 [submodule "mb-exec"]
   path = mb-exec
   url = https://github.com/metaborg/mb-exec.git
-  branch = master
+  branch = strsepcomp
 [submodule "mb-exec-deps"]
   path = mb-exec-deps
   url = https://github.com/metaborg/mb-exec-deps.git
@@ -13,7 +13,7 @@
 [submodule "jsglr"]
   path = jsglr
   url = https://github.com/metaborg/jsglr.git
-  branch = master
+  branch = strsepcomp
 [submodule "runtime-libraries"]
   path = runtime-libraries
   url = https://github.com/metaborg/runtime-libraries.git
@@ -77,15 +77,15 @@
 [submodule "modelware"]
   path = modelware
   url = https://github.com/metaborg/spoofax-modelware.git
-  branch = master
+  branch = strsepcomp
 [submodule "lpg-runtime"]
   path = lpg-runtime
   url = https://github.com/metaborg/lpg-runtime.git
-  branch = master
+  branch = strsepcomp
 [submodule "shrike"]
   path = shrike
   url = https://github.com/metaborg/shrike.git
-  branch = master
+  branch = strsepcomp
 [submodule "spoofax-sunshine"]
   path = spoofax-sunshine
   url = https://github.com/metaborg/spoofax-sunshine.git
@@ -93,7 +93,7 @@
  [submodule "spoofax-benchmark"]
   path = spoofax-benchmark
   url = https://github.com/metaborg/spoofax-benchmark.git
-  branch = master
+  branch = strsepcomp
 [submodule "dynsem"]
   path = dynsem
   url = https://github.com/metaborg/dynsem.git
