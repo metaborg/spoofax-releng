@@ -69,7 +69,7 @@
 [submodule "imp-patched"]
   path = imp-patched
   url = https://github.com/metaborg/imp-patched.git
-  branch = spoofax
+  branch = strsepcomp
 [submodule "strategoxt"]
   path = strategoxt
   url = https://github.com/metaborg/strategoxt.git
