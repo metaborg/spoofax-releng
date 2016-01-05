@@ -54,10 +54,6 @@
   path = spoofax-sunshine
   url = https://github.com/metaborg/spoofax-sunshine.git
   branch = new-spoofax-plugin
- [submodule "spoofax-benchmark"]
-  path = spoofax-benchmark
-  url = https://github.com/metaborg/spoofax-benchmark.git
-  branch = new-spoofax-plugin
 [submodule "dynsem"]
   path = dynsem
   url = https://github.com/metaborg/dynsem.git
