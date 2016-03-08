@@ -1,11 +1,11 @@
 [submodule "mb-rep"]
   path = mb-rep
   url = https://github.com/metaborg/mb-rep.git
-  branch = new-spoofax-plugin
+  branch = master
 [submodule "mb-exec"]
   path = mb-exec
   url = https://github.com/metaborg/mb-exec.git
-  branch = new-spoofax-plugin
+  branch = master
 [submodule "jsglr"]
   path = jsglr
   url = https://github.com/metaborg/jsglr.git
@@ -13,7 +13,7 @@
 [submodule "runtime-libraries"]
   path = runtime-libraries
   url = https://github.com/metaborg/runtime-libraries.git
-  branch = new-spoofax-plugin
+  branch = master
 [submodule "spoofax"]
   path = spoofax
   url = https://github.com/metaborg/spoofax.git
@@ -21,7 +21,7 @@
 [submodule "releng"]
   path = releng
   url = https://github.com/metaborg/spoofax-deploy.git
-  branch = new-spoofax-plugin
+  branch = master
 [submodule "sdf"]
   path = sdf
   url = https://github.com/metaborg/sdf.git
@@ -29,39 +29,39 @@
 [submodule "esv"]
   path = esv
   url = https://github.com/metaborg/esv.git
-  branch = new-spoofax-plugin
+  branch = master
 [submodule "stratego"]
   path = stratego
   url = https://github.com/metaborg/stratego.git
-  branch = new-spoofax-plugin
+  branch = master
 [submodule "nabl"]
   path = nabl
   url = https://github.com/metaborg/nabl.git
-  branch = new-spoofax-plugin
+  branch = master
 [submodule "ts"]
   path = ts
   url = https://github.com/metaborg/ts.git
-  branch = new-spoofax-plugin
+  branch = master
 [submodule "spt"]
   path = spt
   url = https://github.com/metaborg/spt.git
-  branch = new-spoofax-plugin
+  branch = master
 [submodule "strategoxt"]
   path = strategoxt
   url = https://github.com/metaborg/strategoxt.git
-  branch = new-spoofax-plugin
+  branch = master
 [submodule "spoofax-sunshine"]
   path = spoofax-sunshine
   url = https://github.com/metaborg/spoofax-sunshine.git
-  branch = new-spoofax-plugin
+  branch = master
 [submodule "spoofax-benchmark"]
   path = spoofax-benchmark
   url = https://github.com/metaborg/spoofax-benchmark.git
-  branch = new-spoofax-plugin
+  branch = master
 [submodule "dynsem"]
   path = dynsem
   url = https://github.com/metaborg/dynsem.git
-  branch = new-spoofax-plugin
+  branch = master
 [submodule "spoofax-maven"]
 	path = spoofax-maven
 	url = https://github.com/metaborg/spoofax-maven.git
