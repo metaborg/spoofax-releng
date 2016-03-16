@@ -66,3 +66,7 @@
   path = spoofax-eclipse
   url = https://github.com/metaborg/spoofax-eclipse.git
   branch = master
+[submodule "spoofax-intellij"]
+	path = spoofax-intellij
+	url = https://github.com/metaborg/spoofax-intellij.git
+	branch = develop
