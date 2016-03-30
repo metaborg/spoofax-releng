@@ -69,4 +69,4 @@
 [submodule "spoofax-intellij"]
 	path = spoofax-intellij
 	url = https://github.com/metaborg/spoofax-intellij.git
-	branch = develop
+	branch = master
