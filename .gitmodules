@@ -1,7 +1,7 @@
 [submodule "mb-rep"]
   path = mb-rep
   url = https://github.com/metaborg/mb-rep.git
-  branch = master
+  branch = new-completions
 [submodule "mb-exec"]
   path = mb-exec
   url = https://github.com/metaborg/mb-exec.git
@@ -13,7 +13,7 @@
 [submodule "runtime-libraries"]
   path = runtime-libraries
   url = https://github.com/metaborg/runtime-libraries.git
-  branch = master
+  branch = new-completions
 [submodule "spoofax"]
   path = spoofax
   url = https://github.com/metaborg/spoofax.git
@@ -45,7 +45,7 @@
 [submodule "spt"]
   path = spt
   url = https://github.com/metaborg/spt.git
-  branch = master
+  branch = new-completions
 [submodule "strategoxt"]
   path = strategoxt
   url = https://github.com/metaborg/strategoxt.git
@@ -61,7 +61,7 @@
 [submodule "dynsem"]
   path = dynsem
   url = https://github.com/metaborg/dynsem.git
-  branch = master
+  branch = new-completions
 [submodule "spoofax-maven"]
 	path = spoofax-maven
 	url = https://github.com/metaborg/spoofax-maven.git
@@ -69,4 +69,8 @@
 [submodule "spoofax-eclipse"]
 	path = spoofax-eclipse
 	url = https://github.com/metaborg/spoofax-eclipse.git
-  branch = master
+  branch = new-completions
+[submodule "spoofax-intellij"]
+  path = spoofax-intellij
+  url = https://github.com/metaborg/spoofax-intellij.git
+  branch = master  
