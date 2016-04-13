@@ -21,7 +21,7 @@
 [submodule "releng"]
   path = releng
   url = https://github.com/metaborg/spoofax-deploy.git
-  branch = master
+  branch = new-spt
 [submodule "sdf"]
   path = sdf
   url = https://github.com/metaborg/sdf.git
@@ -45,7 +45,7 @@
 [submodule "spt"]
   path = spt
   url = https://github.com/metaborg/spt.git
-  branch = master
+  branch = new-spt
 [submodule "strategoxt"]
   path = strategoxt
   url = https://github.com/metaborg/strategoxt.git
@@ -65,7 +65,7 @@
 [submodule "spoofax-eclipse"]
   path = spoofax-eclipse
   url = https://github.com/metaborg/spoofax-eclipse.git
-  branch = master
+  branch = new-spt
 [submodule "spoofax-intellij"]
 	path = spoofax-intellij
 	url = https://github.com/metaborg/spoofax-intellij.git
