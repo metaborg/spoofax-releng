@@ -17,7 +17,7 @@
 [submodule "spoofax"]
   path = spoofax
   url = https://github.com/metaborg/spoofax.git
-  branch = master
+  branch = new-spt
 [submodule "releng"]
   path = releng
   url = https://github.com/metaborg/spoofax-deploy.git
