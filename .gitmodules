@@ -17,7 +17,7 @@
 [submodule "spoofax"]
   path = spoofax
   url = https://github.com/metaborg/spoofax.git
-  branch = master
+  branch = bootstrapping
 [submodule "releng"]
   path = releng
   url = https://github.com/metaborg/spoofax-deploy.git
@@ -25,23 +25,23 @@
 [submodule "sdf"]
   path = sdf
   url = https://github.com/metaborg/sdf.git
-  branch = bootstrapping
+  branch = master
 [submodule "esv"]
   path = esv
   url = https://github.com/metaborg/esv.git
-  branch = bootstrapping
+  branch = master
 [submodule "stratego"]
   path = stratego
   url = https://github.com/metaborg/stratego.git
-  branch = bootstrapping
+  branch = master
 [submodule "nabl"]
   path = nabl
   url = https://github.com/metaborg/nabl.git
-  branch = bootstrapping
+  branch = master
 [submodule "ts"]
   path = ts
   url = https://github.com/metaborg/ts.git
-  branch = bootstrapping
+  branch = master
 [submodule "spt"]
   path = spt
   url = https://github.com/metaborg/spt.git
@@ -57,7 +57,7 @@
 [submodule "dynsem"]
   path = dynsem
   url = https://github.com/metaborg/dynsem.git
-  branch = bootstrapping
+  branch = master
 [submodule "spoofax-maven"]
   path = spoofax-maven
   url = https://github.com/metaborg/spoofax-maven.git
