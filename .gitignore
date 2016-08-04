@@ -1,3 +1,6 @@
-.cache
-.qualifier
-.buildenv
+/.cache
+/.qualifier
+/.buildenv
+/.m2
+/dist
+/eclipsegen
