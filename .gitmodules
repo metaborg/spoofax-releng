@@ -70,3 +70,7 @@
 	path = spoofax-intellij
 	url = https://github.com/metaborg/spoofax-intellij.git
 	branch = master
+[submodule "metaborg-coq"]
+	path = metaborg-coq
+	url = https://github.com/MetaBorgCube/metaborg-coq.git
+	branch = master
