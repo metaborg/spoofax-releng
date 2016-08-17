@@ -54,6 +54,10 @@
   path = spoofax-sunshine
   url = https://github.com/metaborg/spoofax-sunshine.git
   branch = master
+[submodule "spoofax-benchmark"]
+  path = spoofax-benchmark
+  url = https://github.com/metaborg/spoofax-benchmark.git
+  branch = master
 [submodule "dynsem"]
   path = dynsem
   url = https://github.com/metaborg/dynsem.git
@@ -67,6 +71,11 @@
 	url = https://github.com/metaborg/spoofax-eclipse.git
   branch = new-completions
 [submodule "spoofax-intellij"]
+<<<<<<< HEAD
+  path = spoofax-intellij
+  url = https://github.com/metaborg/spoofax-intellij.git
+  branch = master  
+=======
 	path = spoofax-intellij
 	url = https://github.com/metaborg/spoofax-intellij.git
 	branch = master
@@ -74,3 +83,4 @@
 	path = metaborg-coq
 	url = https://github.com/MetaBorgCube/metaborg-coq.git
 	branch = master
+>>>>>>> master
