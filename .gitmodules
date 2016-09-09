@@ -73,4 +73,4 @@
 [submodule "metaborg-coq"]
   path = metaborg-coq
   url = https://github.com/MetaBorgCube/metaborg-coq.git
-  branch = master
+  branch = in4303
