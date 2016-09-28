@@ -9,7 +9,8 @@ node {
       checkout scm
 
       sh "git clean -ddffxx"
-      
+
+      sh "git submodule update --init --remote --recursive -- releng"
       sh "./b checkout -y"
       sh "./b update"
     }
