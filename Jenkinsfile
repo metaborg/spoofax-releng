@@ -1,4 +1,9 @@
 node {
+  stage('Check') {
+    sh "python3 --version"
+    sh "java -version"
+    sh "mvn --version"
+  }
   stage('Checkout') {
     checkout scm
     sh "git clean -ddffxx"
