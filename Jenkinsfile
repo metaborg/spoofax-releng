@@ -1,20 +1,20 @@
 node {
   stage('Check') {
-    sh "python3 --version"
-    sh "pip3 --version"
-    sh "java -version"
-    sh "mvn --version"
+    sh 'python3 --version'
+    sh 'pip3 --version'
+    sh 'java -version'
+    sh 'mvn --version'
   }
 
-  stage('Checkout') {
+  stage('Update') {
     checkout scm
-    sh "git clean -ddffxx"
-    sh "git submodule update --init --remote --recursive -- releng"
-    sh "./b checkout -y"
-    sh "./b update"
+    sh 'git clean -ddffxx'
+    sh 'git submodule update --init --remote --recursive -- releng'
+    sh './b checkout -y'
+    sh './b update'
   }
 
-  stage('Build and deploy') {
+  stage('Build and Deploy') {
     def mavenLocalRepo = "${env.JENKINS_HOME}/m2repos/${env.EXECUTOR_NUMBER}"
     def command = """
     ./b build all eclipse-instances \
@@ -34,6 +34,6 @@ node {
   }
 
   stage('Archive') {
-    archiveArtifacts artifacts: 'dist/*'
+    archiveArtifacts artifacts: 'dist/', excludes: null, onlyIfSuccessful: true
   }
 }
