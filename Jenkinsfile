@@ -34,8 +34,18 @@ if(jobBaseSlashPos != -1) {
 def branchName = env.BRANCH_NAME
 
 // Determine if this is the trigger job, or a regular build job.
+// The trigger job checks for changes, pushes a commit with updated submodule revisions, and triggers the regular build.
+// The regular job builds and deploys Spoofax.
 def isTrigger = jobBaseName == 'spoofax-trigger-check'
 
+
+if(isTrigger) {
+  // Keep last 2 builds, disable concurrent builds.
+  properties([buildDiscarder(logRotator(numToKeepStr: '2')), disableConcurrentBuilds(), pipelineTriggers([])])
+} else {
+  // Keep last 5 builds.
+  properties([buildDiscarder(logRotator(numToKeepStr: '5')), pipelineTriggers([])])
+}
 
 node {
   stage('Check') {
@@ -66,7 +76,6 @@ node {
   }
 
   if(isTrigger) {
-    // The trigger job checks for changes, pushes a commit with updated submodule revisions, and triggers the regular build.
     stage('Trigger') {
       // Recover previous qualifier file to check if something has changed.
       step([$class: 'CopyArtifact', filter: '.qualifier', projectName: jobName, optional: true])
@@ -84,8 +93,8 @@ node {
           // Commit and push. Allow failure of git commands, which could happen if something was pushed in between.
           exec_canfail(command)
         }
-        // Trigger a build of Spoofax.
-        build job: "../spoofax/${branchName}", wait: false
+        // Trigger a build of Spoofax. Quiet period of 2 minutes to group multiple changes into a single build.
+        build job: "../spoofax/${branchName}", quietPeriod: 120, wait: false
       } else {
         echo 'No changes since last trigger'
       }
@@ -93,7 +102,6 @@ node {
       archiveArtifacts artifacts: '.qualifier', onlyIfSuccessful: true
     }
   } else {
-    // The regular job builds and deploys Spoofax.
     stage('Build and Deploy') {
       def eclipseQualifier = exec_stdout('./b qualifier')
       // Set the local Maven repository to an executor-local directory, to prevent concurrent build issues.
