@@ -18,7 +18,7 @@ node {
   if(env.JOB_BASE_NAME == 'spoofax-trigger-check') {
     stage('Trigger') {
       step([$class: 'CopyArtifact', filter: '.qualifier', projectName: env.JOB_NAME])
-      def newQualifier = (sh script: './b changed', returnStdout : true).trim()
+      def newQualifier = sh(script: './b changed', returnStdout : true).trim()
       if(newQualifier) {
         def command = """
         git add $(grep path .gitmodules | sed 's/.*= //' | xargs)
@@ -33,7 +33,7 @@ node {
     }
   } else {
     stage('Build and Deploy') {
-      def eclipseQualifier = (sh script: './b qualifier', returnStdout : true).trim()
+      def eclipseQualifier = sh(script: './b qualifier', returnStdout : true).trim()
       def mavenLocalRepo = "${env.JENKINS_HOME}/m2repos/${env.EXECUTOR_NUMBER}"
       def command = """
       ./b build all eclipse-instances \
