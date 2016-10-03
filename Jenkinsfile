@@ -73,6 +73,7 @@ node {
       // Check if changes have occurred. newQualifier is empty if there are no changes, which is false in Groovy.
       def newQualifier = exec_stdout('./b changed')
       if(newQualifier) {
+        echo "Changes occurred since last trigger. New qualifier: ${newQualifier}"
         // Commit changes to submodule revisions.
         def command = """
         git add \$(grep path .gitmodules | sed 's/.*= //' | xargs)
@@ -87,6 +88,8 @@ node {
         build job: "../spoofax/${branchName}", wait: false
         // Archive qualifier file for the next trigger build.
         archiveArtifacts artifacts: '.qualifier', onlyIfSuccessful: true
+      } else {
+        echo 'No changes since last trigger'
       }
     }
   } else {
