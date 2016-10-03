@@ -12,9 +12,6 @@ def exec(String cmd) {
   sh(script: cmd)
 }
 
-// Determine if this is the trigger job, or a regular build job.
-def isTrigger = jobBaseName == 'spoofax-trigger-check'
-
 // env.JOB_BASE_NAME returns the wrong name: parse our own.
 def jobName = env.JOB_NAME
 def jobBaseSlashPos = jobName.indexOf('/')
@@ -25,6 +22,9 @@ if(jobBaseSlashPos != -1) {
    jobBaseName = jobName
 }
 def branchName = env.BRANCH_NAME
+
+// Determine if this is the trigger job, or a regular build job.
+def isTrigger = jobBaseName == 'spoofax-trigger-check'
 
 
 node {
@@ -39,7 +39,7 @@ node {
 
   stage('Update') {
     checkout scm
-    
+
     // Checkout branch and set to rev, since Jenkins checks out a commit (detached head).
     def rev = exec_stdout('git rev-parse HEAD')
     exec "git checkout ${branchName}"
