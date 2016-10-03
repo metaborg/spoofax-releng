@@ -21,7 +21,7 @@ node {
       def newQualifier = sh(script: './b changed', returnStdout : true).trim()
       if(newQualifier) {
         def command = """
-        git add $(grep path .gitmodules | sed 's/.*= //' | xargs)
+        git add \$(grep path .gitmodules | sed 's/.*= //' | xargs)
         git commit --author="metaborgbot <>" -m "Build farm build for qualifier ${newQualifier} started, updating submodule revisions."
         git push --set-upstream origin ${env.BRANCH_NAME}
         """
