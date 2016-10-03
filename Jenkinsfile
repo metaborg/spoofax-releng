@@ -65,6 +65,7 @@ node {
           exec_canfail(command)
         }
         build job: "../spoofax/${branchName}", wait: false
+        archiveArtifacts artifacts: '.qualifier', onlyIfSuccessful: true
       }
     }
   } else {
@@ -90,7 +91,7 @@ node {
     }
 
     stage('Archive') {
-      archiveArtifacts artifacts: 'dist/', excludes: null, onlyIfSuccessful: true
+      archiveArtifacts artifacts: 'dist/', onlyIfSuccessful: true
     }
   }
 }
