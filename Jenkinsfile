@@ -86,11 +86,11 @@ node {
         }
         // Trigger a build of Spoofax.
         build job: "../spoofax/${branchName}", wait: false
-        // Archive qualifier file for the next trigger build.
-        archiveArtifacts artifacts: '.qualifier', onlyIfSuccessful: true
       } else {
         echo 'No changes since last trigger'
       }
+      // Archive qualifier file for the next trigger build.
+      archiveArtifacts artifacts: '.qualifier', onlyIfSuccessful: true
     }
   } else {
     // The regular job builds and deploys Spoofax.
