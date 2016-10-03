@@ -118,7 +118,7 @@ node {
           --maven-deploy \
           --maven-deploy-identifier 'metaborg-nexus' \
           --maven-deploy-url 'http://artifacts.metaborg.org/content/repositories/snapshots/' \
-          --gradle-no-native
+          --gradle-no-native \
           --gradle-no-daemon
       """
       // Get Maven configuration and credentials from provided settings.
