@@ -1,9 +1,16 @@
 // env.JOB_BASE_NAME returns the wrong name: parse our own
-def jobBaseName = env.JOB_NAME.takeWhile { it != '/' }
+def jobName = env.JOB_NAME
+def jobBaseSlashPos = jobName.indexOf('/')
+String jobBaseName
+if(jobBaseSlashPos != -1) {
+  jobBaseName = jobName.substring(0, jobBaseSlashPos)
+} else {
+   jobBaseName = jobName
+}
 
 node {
   stage('Check') {
-    echo "Job ${env.JOB_NAME} (Jenkins base: ${env.JOB_BASE_NAME}, workaround base: ${jobBaseName}) on branch ${env.BRANCH_NAME}"
+    echo "Job ${jobName} (Jenkins base: ${env.JOB_BASE_NAME}, workaround base: ${jobBaseName}) on branch ${env.BRANCH_NAME}"
     sh 'bash --version'
     sh 'python3 --version'
     sh 'pip3 --version'
@@ -21,7 +28,7 @@ node {
 
   if(jobBaseName == 'spoofax-trigger-check') {
     stage('Trigger') {
-      step([$class: 'CopyArtifact', filter: '.qualifier', projectName: env.JOB_NAME])
+      step([$class: 'CopyArtifact', filter: '.qualifier', projectName: jobName])
       def newQualifier = sh(script: './b changed', returnStdout : true).trim()
       if(newQualifier) {
         def command = """
