@@ -5,7 +5,7 @@ def exec_stdout(String cmd) {
   } catch(hudson.AbortException ae) {
     // Exit code 143 means SIGTERM (process was killed). These must be propagated.
     if(ae.getMessage().contains('script returned exit code 143')) {
-      throw new UserInterruptedException(ae)
+      throw ae
     } else {
       // Return empty string, which also evaluates to false.
       return ''
