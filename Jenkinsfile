@@ -28,7 +28,7 @@ node {
 
   if(jobBaseName == 'spoofax-trigger-check') {
     stage('Trigger') {
-      step([$class: 'CopyArtifact', filter: '.qualifier', projectName: jobName])
+      step([$class: 'CopyArtifact', filter: '.qualifier', projectName: jobName, optional: true])
       def newQualifier = sh(script: './b changed', returnStdout : true).trim()
       if(newQualifier) {
         def command = """
