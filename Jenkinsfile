@@ -1,5 +1,6 @@
 node {
   stage('Check') {
+    echo "Job ${env.JOB_NAME} (base: ${env.JOB_BASE_NAME}) on branch ${env.BRANCH_NAME}"
     sh 'bash --version'
     sh 'python3 --version'
     sh 'pip3 --version'
