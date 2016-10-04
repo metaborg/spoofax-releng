@@ -67,12 +67,17 @@ node {
     exec "git reset --hard ${rev}"
     // Clean repository to ensure a clean build.
     exec 'git clean -ddffxx'
-    // Update 'releng' submodule. Must be done first because 'releng' hosts the build script used in the next command.
-    exec 'git submodule update --init --remote --recursive -- releng'
-    // Update submodules, since Jenkins does not do this correctly.
-    exec './b clean-update -y'
-    // TODO: we should not have to update submodules to the latest revision for regular builds. Just checking out the
-    // revisions as given by the repository should suffice, since the trigger pushes a commit with updated submodule revisions.
+    if(isTrigger) {
+      // Update 'releng' submodule. Must be done first because 'releng' hosts the build script used in the next command.
+      exec 'git submodule update --init --remote --recursive -- releng'
+      // Switch to SSH remotes.
+      exec './b set-remote -s'
+      // Update submodules to latest remote.
+      exec './b clean-update -y'
+    } else {
+      // Checkout submodules to stored revisions. Commit from trigger will have moved submodules forward.
+      exec 'git submodule update --init --checkout --recursive'
+    }
   }
 
   if(isTrigger) {
@@ -83,16 +88,13 @@ node {
       def newQualifier = exec_stdout('./b changed')
       if(newQualifier) {
         echo "Changes occurred since last trigger. New qualifier: ${newQualifier}"
-        // Commit changes to submodule revisions.
-        def command = """
+        // Commit and push changes to submodule revisions.
+        // Allow failure of git commands, which could happen if something was pushed in between.
+        exec_canfail("""
         git add \$(grep path .gitmodules | sed 's/.*= //' | xargs)
         git commit --author="metaborgbot <>" -m "Build farm build for qualifier ${newQualifier} started, updating submodule revisions."
         git push --set-upstream origin ${branchName}
-        """
-        sshagent(['bc1d3314-2ab4-4b64-b46e-11f0030fecc1']) {
-          // Commit and push. Allow failure of git commands, which could happen if something was pushed in between.
-          exec_canfail(command)
-        }
+        """)
         // Trigger a build of Spoofax. Quiet period of 2 minutes to group multiple changes into a single build.
         build job: "../spoofax/${branchName}", quietPeriod: 120, wait: false
       } else {
