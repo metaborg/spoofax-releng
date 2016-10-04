@@ -113,7 +113,7 @@ node {
           exec(command)
         }
         // Trigger a build of Spoofax. Quiet period of 2 minutes to group multiple changes into a single build.
-        build job: "../spoofax/${branchName}", quietPeriod: 120, wait: false
+        build job: "/metaborg/spoofax-releng/${branchName}", quietPeriod: 120, wait: false
       } else {
         echo 'No changes since last trigger'
       }
