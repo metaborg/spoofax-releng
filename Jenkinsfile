@@ -48,6 +48,15 @@ if(isTrigger) {
 }
 
 node {
+  // Read properties
+  def defaultProps = [
+    'git.ssh.credential'    : 'bc1d3314-2ab4-4b64-b46e-11f0030fecc1'
+  , 'maven.config.provided' : 'org.jenkinsci.plugins.configfiles.maven.MavenSettingsConfig1430668968947'
+  ]
+  def props = readProperties file: 'jenkins.properties', defaults: defaultProps
+  def gitSshCredentials = props['git.ssh.credential']
+  def mavenConfigProvided = props['maven.config.provided']
+
   stage('Check') {
     // Print important variables and versions for debugging purposes.
     echo "Job ${jobName} (base: ${jobBaseName}) on branch ${branchName}"
@@ -68,7 +77,7 @@ node {
     // Clean repository to ensure a clean build.
     exec 'git clean -ddffxx'
     if(isTrigger) {
-      sshagent(['bc1d3314-2ab4-4b64-b46e-11f0030fecc1']) {
+      sshagent([gitSshCredentials]) {
         // Update 'releng' submodule. Must be done first because 'releng' hosts the build script used in the next command.
         exec 'git submodule update --init --remote --recursive -- releng'
         // Switch to SSH remotes.
@@ -96,7 +105,7 @@ node {
         git commit --author="metaborgbot <>" -m "Build farm build for qualifier ${newQualifier} started, updating submodule revisions."
         git push --set-upstream origin ${branchName}
         """
-        sshagent(['bc1d3314-2ab4-4b64-b46e-11f0030fecc1']) {
+        sshagent([gitSshCredentials]) {
           exec(command)
         }
         // Trigger a build of Spoofax. Quiet period of 2 minutes to group multiple changes into a single build.
@@ -121,14 +130,11 @@ node {
           --stratego-no-tests \
           --copy-artifacts 'dist' \
           --maven-local-repo '${mavenLocalRepo}' \
-          --maven-deploy \
-          --maven-deploy-identifier 'metaborg-nexus' \
-          --maven-deploy-url 'http://artifacts.metaborg.org/content/repositories/snapshots/' \
           --gradle-no-native \
           --gradle-no-daemon
       """
       // Get Maven configuration and credentials from provided settings.
-      withMaven(mavenSettingsConfig: 'org.jenkinsci.plugins.configfiles.maven.MavenSettingsConfig1430668968947') {
+      withMaven(mavenSettingsConfig: mavenConfigProvided) {
         exec(command)
       }
     }
