@@ -47,17 +47,9 @@ if(isTrigger) {
   properties([buildDiscarder(logRotator(numToKeepStr: '5')), pipelineTriggers([])])
 }
 
-node {
-  // Read properties
-  def defaultProps = [
-    'git.ssh.credential'    : 'bc1d3314-2ab4-4b64-b46e-11f0030fecc1'
-  , 'maven.config.provided' : 'org.jenkinsci.plugins.configfiles.maven.MavenSettingsConfig1430668968947'
-  ]
-  def props = readProperties file: 'jenkins.properties', defaults: defaultProps
-  def gitSshCredentials = props['git.ssh.credential']
-  def mavenConfigProvided = props['maven.config.provided']
 
-  stage('Check') {
+node {
+  stage('Echo') {
     // Print important variables and versions for debugging purposes.
     echo "Job ${jobName} (base: ${jobBaseName}) on branch ${branchName}"
     exec 'bash --version'
@@ -67,7 +59,7 @@ node {
     exec 'mvn --version'
   }
 
-  stage('Update') {
+  stage('Checkout') {
     // Checkout the revision of the triggered build.
     checkout scm
     // Checkout branch and set to rev, since Jenkins checks out a commit (detached head).
@@ -76,6 +68,18 @@ node {
     exec "git reset --hard ${rev}"
     // Clean repository to ensure a clean build.
     exec 'git clean -ddffxx'
+  }
+
+  // Read properties
+  def defaultProps = [
+    'git.ssh.credential'    : 'bc1d3314-2ab4-4b64-b46e-11f0030fecc1'
+  , 'maven.config.provided' : 'org.jenkinsci.plugins.configfiles.maven.MavenSettingsConfig1430668968947'
+  ]
+  def props = readProperties file: 'jenkins.properties', defaults: defaultProps
+  def gitSshCredentials = props['git.ssh.credential']
+  def mavenConfigProvided = props['maven.config.provided']
+
+  stage('Update') {
     if(isTrigger) {
       sshagent([gitSshCredentials]) {
         // Update 'releng' submodule. Must be done first because 'releng' hosts the build script used in the next command.
