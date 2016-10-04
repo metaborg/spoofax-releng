@@ -68,12 +68,12 @@ node {
     // Clean repository to ensure a clean build.
     exec 'git clean -ddffxx'
     if(isTrigger) {
-      // Update 'releng' submodule. Must be done first because 'releng' hosts the build script used in the next command.
-      exec 'git submodule update --init --remote --recursive -- releng'
-      // Switch to SSH remotes.
-      exec './b set-remote -s'
-      // Update submodules to latest remote.
       sshagent(['bc1d3314-2ab4-4b64-b46e-11f0030fecc1']) {
+        // Update 'releng' submodule. Must be done first because 'releng' hosts the build script used in the next command.
+        exec 'git submodule update --init --remote --recursive -- releng'
+        // Switch to SSH remotes.
+        exec './b set-remote -s'
+        // Update submodules to latest remote.
         exec './b clean-update -y'
       }
     } else {
