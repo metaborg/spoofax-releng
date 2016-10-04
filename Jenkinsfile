@@ -73,7 +73,9 @@ node {
       // Switch to SSH remotes.
       exec './b set-remote -s'
       // Update submodules to latest remote.
-      exec './b clean-update -y'
+      sshagent(['bc1d3314-2ab4-4b64-b46e-11f0030fecc1']) {
+        exec './b clean-update -y'
+      }
     } else {
       // Checkout submodules to stored revisions. Commit from trigger will have moved submodules forward.
       exec 'git submodule update --init --checkout --recursive'
@@ -89,12 +91,14 @@ node {
       if(newQualifier) {
         echo "Changes occurred since last trigger. New qualifier: ${newQualifier}"
         // Commit and push changes to submodule revisions.
-        // Allow failure of git commands, which could happen if something was pushed in between.
-        exec_canfail("""
+        def command = """
         git add \$(grep path .gitmodules | sed 's/.*= //' | xargs)
         git commit --author="metaborgbot <>" -m "Build farm build for qualifier ${newQualifier} started, updating submodule revisions."
         git push --set-upstream origin ${branchName}
-        """)
+        """
+        sshagent(['bc1d3314-2ab4-4b64-b46e-11f0030fecc1']) {
+          exec(command)
+        }
         // Trigger a build of Spoofax. Quiet period of 2 minutes to group multiple changes into a single build.
         build job: "../spoofax/${branchName}", quietPeriod: 120, wait: false
       } else {
