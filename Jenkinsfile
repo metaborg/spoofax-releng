@@ -151,8 +151,8 @@ node {
       archiveArtifacts artifacts: 'dist/', onlyIfSuccessful: true
     }
   }
-}
 
-stage('Cleanup') {
-  exec 'git clean -ddffxx'
+  stage('Cleanup') {
+    exec 'git clean -ddffxx'
+  }
 }
