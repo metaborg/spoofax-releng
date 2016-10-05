@@ -47,8 +47,8 @@ if(isTrigger) {
   , pipelineTriggers([upstream(threshold: hudson.model.Result.SUCCESS, upstreamProjects: '/spoofax-trigger')])
   ])
 } else {
-  // Keep last 5 builds.
-  properties([buildDiscarder(logRotator(numToKeepStr: '5')), pipelineTriggers([])])
+  // Keep last 3 builds.
+  properties([buildDiscarder(logRotator(numToKeepStr: '3')), pipelineTriggers([])])
 }
 
 
@@ -151,4 +151,8 @@ node {
       archiveArtifacts artifacts: 'dist/', onlyIfSuccessful: true
     }
   }
+}
+
+stage('Cleanup') {
+  exec 'git clean -ddffxx'
 }
