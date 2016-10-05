@@ -132,14 +132,9 @@ node {
       // Create the build command to run.
       // Disable Gradle native libraries and daemon because they do not work on our buildfarm.
       def command = """
-      ./b build all eclipse-instances \
+      ./b -p jenkins.properties -p build.properties build all eclipse-instances \
           --eclipse-qualifier ${eclipseQualifier} \
-          --stratego-build \
-          --stratego-no-tests \
-          --copy-artifacts 'dist' \
-          --maven-local-repo '${mavenLocalRepo}' \
-          --gradle-no-native \
-          --gradle-no-daemon
+          --maven-local-repo '${mavenLocalRepo}'
       """
       // Get Maven configuration and credentials from provided settings.
       withMaven(mavenSettingsConfig: mavenConfigProvided) {
