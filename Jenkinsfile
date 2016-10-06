@@ -174,7 +174,8 @@ def exec(String cmd) {
 }
 
 def createMessage(String message) {
-  return "Build ${env.JOB_NAME} ${env.BUILD_NUMBER} ${message} (<${env.BUILD_URL}/console|Open>)"
+  def durationInMins = Math.round(currentBuild.duration / 1000)
+  return "${env.JOB_NAME} - ${env.BUILD_NUMBER} - ${message} after ${durationInMins} mins (<${env.BUILD_URL}|Status> <${env.BUILD_URL}console|Console>)"
 }
 def notifyFail(String channel) {
   if(!channel) {
@@ -184,12 +185,12 @@ def notifyFail(String channel) {
   def prevBuild = currentBuild.getPreviousBuild()
   if(prevBuild) {
     if('SUCCESS'.equals(prevBuild.getResult())) {
-      slackSend channel: channel, color: 'danger', message: createMessage('failed')
+      slackSend channel: channel, color: 'danger', message: createMessage('failed :facepalm:')
     } else {
-      slackSend channel: channel, color: 'danger', message: createMessage('still failing')
+      slackSend channel: channel, color: 'danger', message: createMessage('still failing :facepalm:')
     }
   } else {
-    slackSend channel: channel, color: 'danger', message: createMessage('failed')
+    slackSend channel: channel, color: 'danger', message: createMessage('failed :facepalm:')
   }
 }
 def notifySuccess(String channel) {
@@ -199,6 +200,6 @@ def notifySuccess(String channel) {
 
   def prevBuild = currentBuild.getPreviousBuild()
   if(prevBuild && !'SUCCESS'.equals(prevBuild.getResult())) {
-    slackSend channel: channel, color: 'good', message: createMessage('fixed')
+    slackSend channel: channel, color: 'good', message: createMessage('fixed :party_parrot:')
   }
 }
