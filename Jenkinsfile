@@ -181,9 +181,9 @@ def notifyFail(String channel) {
     return
   }
 
-  def prevBuild = currentBuild.rawBuild.getPreviousBuild()
+  def prevBuild = currentBuild.getPreviousBuild()
   if(prevBuild) {
-    if(hudson.model.Result.SUCCESS.equals(prevBuild.getResult())) {
+    if('SUCCESS'.equals(prevBuild.getResult())) {
       slackSend channel: channel, color: 'danger', message: createMessage('failed')
     } else {
       slackSend channel: channel, color: 'danger', message: createMessage('still failing')
@@ -197,8 +197,8 @@ def notifySuccess(String channel) {
     return
   }
 
-  def prevBuild = currentBuild.rawBuild.getPreviousBuild()
-  if(prevBuild && !hudson.model.Result.SUCCESS.equals(prevBuild.getResult())) {
+  def prevBuild = currentBuild.getPreviousBuild()
+  if(prevBuild && !'SUCCESS'.equals(prevBuild.getResult())) {
     slackSend channel: channel, color: 'good', message: createMessage('fixed')
   }
 }
