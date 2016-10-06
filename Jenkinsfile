@@ -1,27 +1,3 @@
-// Utility functions.
-def exec_stdout(String cmd) {
-  try {
-    return sh(script: cmd, returnStdout : true).trim()
-  } catch(hudson.AbortException ae) {
-    // Exit code 143 means SIGTERM (process was killed). These must be propagated.
-    if(ae.getMessage().contains('script returned exit code 143')) {
-      throw ae
-    } else {
-      // Return empty string, which also evaluates to false.
-      return ''
-    }
-  }
-}
-def exec_status(String cmd) {
-  return sh(script: cmd, returnStatus: true)
-}
-def exec_canfail(String cmd) {
-  sh(script: cmd, returnStatus: true)
-}
-def exec(String cmd) {
-  sh(script: cmd)
-}
-
 // Jenkins' env.JOB_BASE_NAME returns the wrong name: parse our own.
 def jobName = env.JOB_NAME
 def jobBaseSlashPos = jobName.indexOf('/')
@@ -82,72 +58,147 @@ node {
   def props = readProperties file: 'jenkins.properties', defaults: defaultProps
   def gitSshCredentials = props['git.ssh.credential']
   def mavenConfigProvided = props['maven.config.provided']
+  def slackChannel = props['slack.channel']
 
-  stage('Update') {
+  try {
+    stage('Update') {
+      if(isTrigger) {
+        sshagent([gitSshCredentials]) {
+          // Update 'releng' submodule. Must be done first because 'releng' hosts the build script used in the next command.
+          exec 'git submodule update --init --remote --recursive -- releng'
+          // Switch to SSH remotes.
+          exec './b set-remote -s'
+          // Update submodules to latest remote.
+          exec './b clean-update -y'
+        }
+      } else {
+        // Checkout submodules to stored revisions. Commit from trigger will have moved submodules forward.
+        exec 'git submodule update --init --checkout --recursive'
+      }
+    }
+
     if(isTrigger) {
-      sshagent([gitSshCredentials]) {
-        // Update 'releng' submodule. Must be done first because 'releng' hosts the build script used in the next command.
-        exec 'git submodule update --init --remote --recursive -- releng'
-        // Switch to SSH remotes.
-        exec './b set-remote -s'
-        // Update submodules to latest remote.
-        exec './b clean-update -y'
+      stage('Trigger') {
+        // Recover previous qualifier file to check if something has changed.
+        step([$class: 'CopyArtifact', filter: '.qualifier', projectName: jobName, optional: true])
+        // Check if changes have occurred. newQualifier is empty if there are no changes, which is false in Groovy.
+        def newQualifier = exec_stdout('./b changed')
+        if(newQualifier) {
+          echo "Changes occurred since last trigger. New qualifier: ${newQualifier}"
+          // Commit and push changes to submodule revisions.
+          def command = """
+          git add \$(grep path .gitmodules | sed 's/.*= //' | xargs)
+          git commit --author="metaborgbot <>" -m "Build farm build for qualifier ${newQualifier} started, updating submodule revisions."
+          git push --set-upstream origin ${branchName}
+          """
+          sshagent([gitSshCredentials]) {
+            exec(command)
+          }
+        } else {
+          echo 'No changes since last trigger'
+        }
+        // Archive qualifier file for the next trigger build.
+        archiveArtifacts artifacts: '.qualifier', onlyIfSuccessful: true
       }
     } else {
-      // Checkout submodules to stored revisions. Commit from trigger will have moved submodules forward.
-      exec 'git submodule update --init --checkout --recursive'
-    }
-  }
-
-  if(isTrigger) {
-    stage('Trigger') {
-      // Recover previous qualifier file to check if something has changed.
-      step([$class: 'CopyArtifact', filter: '.qualifier', projectName: jobName, optional: true])
-      // Check if changes have occurred. newQualifier is empty if there are no changes, which is false in Groovy.
-      def newQualifier = exec_stdout('./b changed')
-      if(newQualifier) {
-        echo "Changes occurred since last trigger. New qualifier: ${newQualifier}"
-        // Commit and push changes to submodule revisions.
+      stage('Build and Deploy') {
+        def eclipseQualifier = exec_stdout('./b qualifier')
+        // Set the local Maven repository to an executor-local directory, to prevent concurrent build issues.
+        def mavenLocalRepo = "${env.JENKINS_HOME}/m2repos/${env.EXECUTOR_NUMBER}"
+        // Create the build command to run.
+        // Disable Gradle native libraries and daemon because they do not work on our buildfarm.
         def command = """
-        git add \$(grep path .gitmodules | sed 's/.*= //' | xargs)
-        git commit --author="metaborgbot <>" -m "Build farm build for qualifier ${newQualifier} started, updating submodule revisions."
-        git push --set-upstream origin ${branchName}
+        ./b -p jenkins.properties -p build.properties build all eclipse-instances \
+            --eclipse-qualifier ${eclipseQualifier} \
+            --maven-local-repo '${mavenLocalRepo}'
         """
-        sshagent([gitSshCredentials]) {
+        // Get Maven configuration and credentials from provided settings.
+        withMaven(mavenSettingsConfig: mavenConfigProvided) {
           exec(command)
         }
-        // Trigger a build of Spoofax. Quiet period of 2 minutes to group multiple changes into a single build.
-        build job: "/metaborg/spoofax-releng/${branchName}", quietPeriod: 120, wait: false
-      } else {
-        echo 'No changes since last trigger'
       }
-      // Archive qualifier file for the next trigger build.
-      archiveArtifacts artifacts: '.qualifier', onlyIfSuccessful: true
-    }
-  } else {
-    stage('Build and Deploy') {
-      def eclipseQualifier = exec_stdout('./b qualifier')
-      // Set the local Maven repository to an executor-local directory, to prevent concurrent build issues.
-      def mavenLocalRepo = "${env.JENKINS_HOME}/m2repos/${env.EXECUTOR_NUMBER}"
-      // Create the build command to run.
-      // Disable Gradle native libraries and daemon because they do not work on our buildfarm.
-      def command = """
-      ./b -p jenkins.properties -p build.properties build all eclipse-instances \
-          --eclipse-qualifier ${eclipseQualifier} \
-          --maven-local-repo '${mavenLocalRepo}'
-      """
-      // Get Maven configuration and credentials from provided settings.
-      withMaven(mavenSettingsConfig: mavenConfigProvided) {
-        exec(command)
+
+      stage('Archive') {
+        archiveArtifacts artifacts: 'dist/', onlyIfSuccessful: true
       }
     }
 
-    stage('Archive') {
-      archiveArtifacts artifacts: 'dist/', onlyIfSuccessful: true
+    stage('Cleanup') {
+      exec 'git clean -ddffxx'
     }
+  } catch(org.jenkinsci.plugins.workflow.steps.FlowInterruptedException e) {
+    if(e.causes.size() == 0) {
+      throw e // No causes, signals abort.
+    } else {
+      notifyFail(slackChannel)
+      throw e
+    }
+  } catch(hudson.AbortException ae) {
+    if(e.getMessage().contains('script returned exit code 143')) {
+      throw e // Exit code 143 means SIGTERM (process was killed), signals abort.
+    } else {
+      notifyFail(slackChannel)
+      throw e
+    }
+  } catch(e) {
+    notifyFail(slackChannel)
+    throw e
   }
 
-  stage('Cleanup') {
-    exec 'git clean -ddffxx'
+  notifySuccess(slackChannel)
+}
+
+
+// Utility functions.
+def exec_stdout(String cmd) {
+  try {
+    return sh(script: cmd, returnStdout : true).trim()
+  } catch(hudson.AbortException ae) {
+    // Exit code 143 means SIGTERM (process was killed). These must be propagated.
+    if(ae.getMessage().contains('script returned exit code 143')) {
+      throw ae
+    } else {
+      // Return empty string, which also evaluates to false.
+      return ''
+    }
+  }
+}
+def exec_status(String cmd) {
+  return sh(script: cmd, returnStatus: true)
+}
+def exec_canfail(String cmd) {
+  sh(script: cmd, returnStatus: true)
+}
+def exec(String cmd) {
+  sh(script: cmd)
+}
+
+def createMessage(String message) {
+  return "Build ${env.JOB_NAME} ${env.BUILD_NUMBER} ${message} (<${env.BUILD_URL}/console|Open>)"
+}
+def notifyFail(String channel) {
+  if(!channel) {
+    return
+  }
+
+  def prevBuild = currentBuild.rawBuild.getPreviousBuild()
+  if(prevBuild) {
+    if(hudson.model.Result.SUCCESS.equals(prevBuild.getResult())) {
+      slackSend channel: channel, color: 'danger', message: createMessage('failed')
+    } else {
+      slackSend channel: channel, color: 'danger', message: createMessage('still failing')
+    }
+  } else {
+    slackSend channel: channel, color: 'danger', message: createMessage('failed')
+  }
+}
+def notifySuccess(String channel) {
+  if(!channel) {
+    return
+  }
+
+  def prevBuild = currentBuild.rawBuild.getPreviousBuild()
+  if(prevBuild && !hudson.model.Result.SUCCESS.equals(prevBuild.getResult())) {
+    slackSend channel: channel, color: 'good', message: createMessage('fixed')
   }
 }
