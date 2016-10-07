@@ -133,7 +133,7 @@ node {
       notifyFail(slackChannel)
       throw e
     }
-  } catch(hudson.AbortException ae) {
+  } catch(hudson.AbortException e) {
     if(e.getMessage().contains('script returned exit code 143')) {
       throw e // Exit code 143 means SIGTERM (process was killed), signals abort.
     } else {
