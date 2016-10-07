@@ -174,8 +174,9 @@ def exec(String cmd) {
 }
 
 def createMessage(String message) {
-  def durationInMins = Math.round(currentBuild.duration / 1000)
-  return "${env.JOB_NAME} - ${env.BUILD_NUMBER} - ${message} after ${durationInMins} mins (<${env.BUILD_URL}|Status> <${env.BUILD_URL}console|Console>)"
+  // def durationInMins = Math.round(currentBuild.duration / 1000)
+  // "after ${durationInMins} mins"
+  return "${env.JOB_NAME} - ${env.BUILD_NUMBER} - ${message} (<${env.BUILD_URL}|Status> <${env.BUILD_URL}console|Console>)"
 }
 def notifyFail(String channel) {
   if(!channel) {
