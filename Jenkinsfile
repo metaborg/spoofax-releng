@@ -18,13 +18,13 @@ def isTrigger = jobBaseName == 'spoofax-trigger-check'
 if(isTrigger) {
   // Keep last 2 builds, disable concurrent builds, build when /spoofax-trigger job builds.
   properties([
-    buildDiscarder(logRotator(numToKeepStr: '2'))
+    buildDiscarder(logRotator(numToKeepStr: '1'))
   , disableConcurrentBuilds()
   , pipelineTriggers([upstream(threshold: hudson.model.Result.SUCCESS, upstreamProjects: '/spoofax-trigger')])
   ])
 } else {
   // Keep last 3 builds.
-  properties([buildDiscarder(logRotator(numToKeepStr: '3')), pipelineTriggers([])])
+  properties([buildDiscarder(logRotator(artifactNumToKeepStr: '3')), disableConcurrentBuilds(), pipelineTriggers([])])
 }
 
 
