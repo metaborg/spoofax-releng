@@ -85,14 +85,17 @@ node {
         def newQualifier = exec_stdout('./b changed')
         if(newQualifier) {
           echo "Changes occurred since last trigger. New qualifier: ${newQualifier}"
-          // Commit and push changes to submodule revisions.
-          def command = """
-          git add \$(grep path .gitmodules | sed 's/.*= //' | xargs)
-          git commit --author="metaborgbot <>" -m "Build farm build for qualifier ${newQualifier} started, updating submodule revisions."
-          git push --set-upstream origin ${branchName}
-          """
-          sshagent([gitSshCredentials]) {
-            exec(command)
+          // Add all changes to submodules.
+          exec("git add \$(grep path .gitmodules | sed 's/.*= //' | xargs)")
+          if(!exec_status('git diff --cached --exit-code')) {
+            // No changes were added, trigger the build manually without a commit.
+            build job: "/metaborg/spoofax-releng/${branchName}", quietPeriod: 60, wait: false
+          } else {
+            // Commit and push changes to submodule revisions.
+            exec("git commit --author='metaborgbot <>' -m 'Submodule(s) changed, updating submodule revisions.'")
+            sshagent([gitSshCredentials]) {
+              exec("git push --set-upstream origin ${branchName}")
+            }
           }
         } else {
           echo 'No changes since last trigger'
