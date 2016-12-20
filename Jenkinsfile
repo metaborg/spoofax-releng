@@ -111,7 +111,7 @@ node {
         // Create the build command to run.
         // Disable Gradle native libraries and daemon because they do not work on our buildfarm.
         def command = """
-        ./b -p jenkins.properties -p build.properties build all \
+        ./b -p jenkins.properties -p build.properties build all eclipse-instances \
             --eclipse-qualifier ${eclipseQualifier} \
             --maven-local-repo '${mavenLocalRepo}'
         """
