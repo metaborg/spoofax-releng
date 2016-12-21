@@ -57,7 +57,7 @@
 [submodule "dynsem"]
   path = dynsem
   url = https://github.com/metaborg/dynsem.git
-  branch = master
+  branch = develop/nabl2
 [submodule "spoofax-maven"]
   path = spoofax-maven
   url = https://github.com/metaborg/spoofax-maven.git
