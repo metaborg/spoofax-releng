@@ -67,6 +67,10 @@
   url = https://github.com/metaborg/spoofax-eclipse.git
   branch = spoofax-release
 [submodule "spoofax-intellij"]
-	path = spoofax-intellij
-	url = https://github.com/metaborg/spoofax-intellij.git
-	branch = spoofax-release
+  path = spoofax-intellij
+  url = https://github.com/metaborg/spoofax-intellij.git
+  branch = spoofax-release
+[submodule "metaborg-coq"]
+  path = metaborg-coq
+  url = https://github.com/MetaBorgCube/metaborg-coq.git
+  branch = spoofax-release
