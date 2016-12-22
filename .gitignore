@@ -1,4 +1,7 @@
-.cache
-.qualifier
-.buildenv
-.m2
+/.cache
+/.qualifier
+/.buildenv
+/.m2
+/.eclipsegen
+/.local-deploy-repository
+/dist
