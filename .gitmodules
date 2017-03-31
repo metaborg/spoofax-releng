@@ -21,7 +21,7 @@
 [submodule "releng"]
   path = releng
   url = https://github.com/metaborg/spoofax-deploy.git
-  branch = master
+  branch = develop/shell
 [submodule "sdf"]
   path = sdf
   url = https://github.com/metaborg/sdf.git
