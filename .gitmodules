@@ -9,11 +9,11 @@
 [submodule "jsglr"]
   path = jsglr
   url = https://github.com/metaborg/jsglr.git
-  branch = master
+  branch = develop/nabl2
 [submodule "runtime-libraries"]
   path = runtime-libraries
   url = https://github.com/metaborg/runtime-libraries.git
-  branch = master
+  branch = develop/nabl2
 [submodule "spoofax"]
   path = spoofax
   url = https://github.com/metaborg/spoofax.git
@@ -25,11 +25,11 @@
 [submodule "sdf"]
   path = sdf
   url = https://github.com/metaborg/sdf.git
-  branch = master
+  branch = develop/nabl2
 [submodule "esv"]
   path = esv
   url = https://github.com/metaborg/esv.git
-  branch = master
+  branch = develop/nabl2
 [submodule "stratego"]
   path = stratego
   url = https://github.com/metaborg/stratego.git
@@ -41,19 +41,19 @@
 [submodule "ts"]
   path = ts
   url = https://github.com/metaborg/ts.git
-  branch = master
+  branch = develop/nabl2
 [submodule "spt"]
   path = spt
   url = https://github.com/metaborg/spt.git
-  branch = master
+  branch = develop/nabl2
 [submodule "strategoxt"]
   path = strategoxt
   url = https://github.com/metaborg/strategoxt.git
-  branch = master
+  branch = develop/nabl2
 [submodule "spoofax-sunshine"]
   path = spoofax-sunshine
   url = https://github.com/metaborg/spoofax-sunshine.git
-  branch = master
+  branch = develop/nabl2
 [submodule "dynsem"]
   path = dynsem
   url = https://github.com/metaborg/dynsem.git
@@ -61,7 +61,7 @@
 [submodule "spoofax-maven"]
   path = spoofax-maven
   url = https://github.com/metaborg/spoofax-maven.git
-  branch = master
+  branch = develop/nabl2
 [submodule "spoofax-eclipse"]
   path = spoofax-eclipse
   url = https://github.com/metaborg/spoofax-eclipse.git
@@ -69,8 +69,8 @@
 [submodule "spoofax-intellij"]
 	path = spoofax-intellij
 	url = https://github.com/metaborg/spoofax-intellij.git
-	branch = master
+	branch = develop/nabl2
 [submodule "metaborg-coq"]
 	path = metaborg-coq
 	url = https://github.com/MetaBorgCube/metaborg-coq.git
-	branch = master
+	branch = develop/nabl2
