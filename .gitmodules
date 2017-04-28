@@ -1,23 +1,23 @@
 [submodule "mb-rep"]
   path = mb-rep
   url = https://github.com/metaborg/mb-rep.git
-  branch = develop/shell
+  branch = master
 [submodule "mb-exec"]
   path = mb-exec
   url = https://github.com/metaborg/mb-exec.git
-  branch = develop/shell
+  branch = master
 [submodule "jsglr"]
   path = jsglr
   url = https://github.com/metaborg/jsglr.git
-  branch = develop/shell
+  branch = master
 [submodule "runtime-libraries"]
   path = runtime-libraries
   url = https://github.com/metaborg/runtime-libraries.git
-  branch = develop/shell
+  branch = master
 [submodule "spoofax"]
   path = spoofax
   url = https://github.com/metaborg/spoofax.git
-  branch = develop/shell
+  branch = master
 [submodule "releng"]
   path = releng
   url = https://github.com/metaborg/spoofax-deploy.git
@@ -25,7 +25,7 @@
 [submodule "sdf"]
   path = sdf
   url = https://github.com/metaborg/sdf.git
-  branch = develop/shell
+  branch = master
 [submodule "esv"]
   path = esv
   url = https://github.com/metaborg/esv.git
@@ -33,35 +33,35 @@
 [submodule "stratego"]
   path = stratego
   url = https://github.com/metaborg/stratego.git
-  branch = develop/shell
+  branch = master
 [submodule "nabl"]
   path = nabl
   url = https://github.com/metaborg/nabl.git
-  branch = develop/shell
+  branch = master
 [submodule "ts"]
   path = ts
   url = https://github.com/metaborg/ts.git
-  branch = develop/shell
+  branch = master
 [submodule "spt"]
   path = spt
   url = https://github.com/metaborg/spt.git
-  branch = develop/shell
+  branch = master
 [submodule "strategoxt"]
   path = strategoxt
   url = https://github.com/metaborg/strategoxt.git
-  branch = develop/shell
+  branch = master
 [submodule "spoofax-sunshine"]
   path = spoofax-sunshine
   url = https://github.com/metaborg/spoofax-sunshine.git
-  branch = develop/shell
+  branch = master
 [submodule "dynsem"]
   path = dynsem
   url = https://github.com/metaborg/dynsem.git
-  branch = develop/shell
+  branch = master
 [submodule "spoofax-maven"]
   path = spoofax-maven
   url = https://github.com/metaborg/spoofax-maven.git
-  branch = develop/shell
+  branch = master
 [submodule "spoofax-eclipse"]
   path = spoofax-eclipse
   url = https://github.com/metaborg/spoofax-eclipse.git
@@ -69,11 +69,11 @@
 [submodule "spoofax-intellij"]
 	path = spoofax-intellij
 	url = https://github.com/metaborg/spoofax-intellij.git
-	branch = develop/shell
+	branch = master
 [submodule "metaborg-coq"]
 	path = metaborg-coq
 	url = https://github.com/MetaBorgCube/metaborg-coq.git
-	branch = develop/shell
+	branch = master
 [submodule "spoofax-shell"]
 	path = spoofax-shell
 	url = https://github.com/metaborg/spoofax-shell.git
