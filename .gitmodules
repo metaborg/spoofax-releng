@@ -20,7 +20,7 @@
   branch = master
 [submodule "releng"]
   path = releng
-  url = https://github.com/metaborg/spoofax-deploy.git
+  url = https://github.com/spoofax-shell-2017/spoofax-deploy.git
   branch = develop/shell
 [submodule "sdf"]
   path = sdf
@@ -28,7 +28,7 @@
   branch = master
 [submodule "esv"]
   path = esv
-  url = https://github.com/metaborg/esv.git
+  url = https://github.com/spoofax-shell-2017/esv.git
   branch = develop/shell
 [submodule "stratego"]
   path = stratego
@@ -64,17 +64,17 @@
   branch = master
 [submodule "spoofax-eclipse"]
   path = spoofax-eclipse
-  url = https://github.com/metaborg/spoofax-eclipse.git
+  url = https://github.com/spoofax-shell-2017/spoofax-eclipse.git
   branch = develop/shell
 [submodule "spoofax-intellij"]
-	path = spoofax-intellij
-	url = https://github.com/metaborg/spoofax-intellij.git
-	branch = master
+  path = spoofax-intellij
+  url = https://github.com/metaborg/spoofax-intellij.git
+  branch = master
 [submodule "metaborg-coq"]
-	path = metaborg-coq
-	url = https://github.com/MetaBorgCube/metaborg-coq.git
-	branch = master
+  path = metaborg-coq
+  url = https://github.com/MetaBorgCube/metaborg-coq.git
+  branch = master
 [submodule "spoofax-shell"]
-	path = spoofax-shell
-	url = https://github.com/metaborg/spoofax-shell.git
+  path = spoofax-shell
+  url = https://github.com/spoofax-shell-2017/spoofax-shell.git
   branch = develop/shell
