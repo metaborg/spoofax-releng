@@ -48,6 +48,7 @@ node {
     exec "git reset --hard ${rev}"
     // Clean repository to ensure a clean build.
     exec 'git clean -ddffxx'
+    exec 'git submodule sync'
   }
 
   // Read properties
