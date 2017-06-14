@@ -56,8 +56,8 @@
   branch = master
 [submodule "dynsem"]
   path = dynsem
-  url = https://github.com/metaborg/dynsem.git
-  branch = truffle-0.25
+  url = https://github.com/spoofax-shell-2017/dynsem.git
+  branch = develop/shell
 [submodule "spoofax-maven"]
   path = spoofax-maven
   url = https://github.com/metaborg/spoofax-maven.git
