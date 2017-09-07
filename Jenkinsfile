@@ -52,12 +52,14 @@ node {
 
   // Read properties
   def defaultProps = [
-    'git.ssh.credential'    : 'bc1d3314-2ab4-4b64-b46e-11f0030fecc1'
-  , 'maven.config.provided' : 'org.jenkinsci.plugins.configfiles.maven.MavenSettingsConfig1430668968947'
+    'git.ssh.credential'  : 'git-metaborgbot-ssh'
+  , 'maven.config'        : 'metaborg-release-maven-config'
+  , 'maven.config.global' : 'metaborg-mirror-global-maven-config'
   ]
   def props = readProperties file: 'jenkins.properties', defaults: defaultProps
   def gitSshCredentials = props['git.ssh.credential']
-  def mavenConfigProvided = props['maven.config.provided']
+  def mavenConfigId = props['maven.config']
+  def mavenGlobalConfigId = props['maven.config.global']
   def slackChannel = props['slack.channel']
 
   try {
@@ -113,10 +115,11 @@ node {
         def command = """
         ./b -p jenkins.properties -p build.properties build all eclipse-instances \
             --eclipse-qualifier ${eclipseQualifier} \
-            --maven-local-repo '${mavenLocalRepo}'
+            --maven-local-repo '${mavenLocalRepo}' \
+            --maven-clean-local-repo
         """
         // Get Maven configuration and credentials from provided settings.
-        withMaven(mavenSettingsConfig: mavenConfigProvided) {
+        withMaven(mavenSettingsConfig: mavenConfigId, globalMavenSettingsConfig: mavenGlobalConfigId) {
           exec(command)
         }
       }
