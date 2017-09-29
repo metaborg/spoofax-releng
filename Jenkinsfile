@@ -115,7 +115,8 @@ node {
         def command = """
         ./b -p jenkins.properties -p build.properties build all eclipse-instances \
             --eclipse-qualifier ${eclipseQualifier} \
-            --maven-local-repo '${mavenLocalRepo}'
+            --maven-local-repo '${mavenLocalRepo}' \
+            --maven-clean-local-repo
         """
         // Get Maven configuration and credentials from provided settings.
         withMaven(mavenSettingsConfig: mavenConfigId, globalMavenSettingsConfig: mavenGlobalConfigId) {
