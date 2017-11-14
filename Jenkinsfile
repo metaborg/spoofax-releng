@@ -94,6 +94,8 @@ node {
             build job: "/metaborg/spoofax-releng/${branchName}", quietPeriod: 60, wait: false
           } else {
             // Commit and push changes to submodule revisions.
+            exec("git config user.name metaborgbot")
+            exec("git config user.email '<>'")
             exec("git commit --author='metaborgbot <>' -m 'Submodule(s) changed, updating submodule revisions.'")
             sshagent([gitSshCredentials]) {
               exec("git push --set-upstream origin ${branchName}")
