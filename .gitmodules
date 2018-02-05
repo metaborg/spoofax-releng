@@ -74,6 +74,10 @@
 	path = metaborg-coq
 	url = https://github.com/MetaBorgCube/metaborg-coq.git
 	branch = develop/nabl2
+[submodule "spg"]
+  path = spg
+  url = https://github.com/metaborg/spg.git
+  branch = develop/nabl2
 [submodule "flowspec"]
   path = flowspec
   url = https://github.com/metaborg/flowspec.git
