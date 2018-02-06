@@ -78,3 +78,7 @@
   path = spoofax-shell
   url = https://github.com/spoofax-shell-2017/spoofax-shell.git
   branch = develop/shell
+[submodule "spg"]
+  path = spg
+  url = https://github.com/metaborg/spg.git
+  branch = master
