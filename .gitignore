@@ -5,3 +5,5 @@
 /.eclipsegen
 /.local-deploy-repository
 /dist
+/.metadata/
+/.recommenders/
