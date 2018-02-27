@@ -74,6 +74,9 @@ node {
           exec './b clean-update -y'
         }
       } else {
+        // Clean and reset submodules to prevent conflicts from modified files
+        exec 'git submodule foreach git clean -ddffxx'
+        exec 'git submodule foreach git reset --hard'
         // Checkout submodules to stored revisions. Commit from trigger will have moved submodules forward.
         exec 'git submodule update --init --checkout --recursive'
       }
@@ -94,6 +97,8 @@ node {
             build job: "/metaborg/spoofax-releng/${branchName}", quietPeriod: 60, wait: false
           } else {
             // Commit and push changes to submodule revisions.
+            exec("git config user.name metaborgbot")
+            exec("git config user.email '<>'")
             exec("git commit --author='metaborgbot <>' -m 'Submodule(s) changed, updating submodule revisions.'")
             sshagent([gitSshCredentials]) {
               exec("git push --set-upstream origin ${branchName}")
@@ -115,7 +120,8 @@ node {
         def command = """
         ./b -p jenkins.properties -p build.properties build all eclipse-instances \
             --eclipse-qualifier ${eclipseQualifier} \
-            --maven-local-repo '${mavenLocalRepo}'
+            --maven-local-repo '${mavenLocalRepo}' \
+            --maven-clean-local-repo
         """
         // Get Maven configuration and credentials from provided settings.
         withMaven(mavenSettingsConfig: mavenConfigId, globalMavenSettingsConfig: mavenGlobalConfigId) {
