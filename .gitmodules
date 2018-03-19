@@ -80,5 +80,5 @@
   branch = master
 [submodule "flowspec"]
 	path = flowspec
-	url = http://github.com/metaborg/flowspec.git
+	url = https://github.com/metaborg/flowspec.git
   branch = master
