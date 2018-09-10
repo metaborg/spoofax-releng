@@ -74,6 +74,9 @@ node {
           exec './b clean-update -y'
         }
       } else {
+        // Clean and reset submodules to prevent conflicts from modified files
+        exec 'git submodule foreach git clean -ddffxx'
+        exec 'git submodule foreach git reset --hard'
         // Checkout submodules to stored revisions. Commit from trigger will have moved submodules forward.
         exec 'git submodule update --init --checkout --recursive'
       }
