@@ -113,15 +113,11 @@ node {
     } else {
       stage('Build and Deploy') {
         def eclipseQualifier = exec_stdout('./b qualifier')
-        // Set the local Maven repository to an executor-local directory, to prevent concurrent build issues.
-        def mavenLocalRepo = "${env.JENKINS_HOME}/m2repos/${env.EXECUTOR_NUMBER}"
         // Create the build command to run.
         // Disable Gradle native libraries and daemon because they do not work on our buildfarm.
         def command = """
         ./b -p jenkins.properties -p build.properties build all eclipse-instances \
-            --eclipse-qualifier ${eclipseQualifier} \
-            --maven-local-repo '${mavenLocalRepo}' \
-            --maven-clean-local-repo
+            --eclipse-qualifier ${eclipseQualifier}
         """
         // Get Maven configuration and credentials from provided settings.
         withMaven(mavenSettingsConfig: mavenConfigId, globalMavenSettingsConfig: mavenGlobalConfigId) {
