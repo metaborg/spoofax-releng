@@ -32,6 +32,7 @@ node {
   stage('Echo') {
     // Print important variables and versions for debugging purposes.
     echo "Job ${jobName} (base: ${jobBaseName}) on branch ${branchName}"
+    exec 'env'
     exec 'bash --version'
     exec 'python3 --version'
     exec 'pip3 --version'
