@@ -16,9 +16,9 @@ def isTrigger = jobBaseName == 'spoofax-trigger-check'
 
 
 if(isTrigger) {
-  // Keep last 2 builds, disable concurrent builds, build when /spoofax-trigger job builds.
+  // Keep last 3 builds, disable concurrent builds, build when /spoofax-trigger job builds.
   properties([
-    buildDiscarder(logRotator(numToKeepStr: '1'))
+    buildDiscarder(logRotator(numToKeepStr: '3'))
   , disableConcurrentBuilds()
   , pipelineTriggers([upstream(threshold: hudson.model.Result.SUCCESS, upstreamProjects: '/spoofax-trigger')])
   ])
@@ -34,6 +34,7 @@ node {
     echo "Job ${jobName} (base: ${jobBaseName}) on branch ${branchName}"
     exec 'env'
     exec 'bash --version'
+    exec 'git --version'
     exec 'python3 --version'
     exec 'pip3 --version'
     exec 'java -version'
@@ -69,8 +70,6 @@ node {
         sshagent([gitSshCredentials]) {
           // Update 'releng' submodule. Must be done first because 'releng' hosts the build script used in the next command.
           exec 'git submodule update --init --remote --recursive -- releng'
-          // Switch to SSH remotes.
-          exec './b set-remote -s'
           // Update submodules to latest remote.
           exec './b clean-update -y'
         }
