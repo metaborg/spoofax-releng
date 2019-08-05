@@ -16,9 +16,9 @@ def isTrigger = jobBaseName == 'spoofax-trigger-check'
 
 
 if(isTrigger) {
-  // Keep last 2 builds, disable concurrent builds, build when /spoofax-trigger job builds.
+  // Keep last 3 builds, disable concurrent builds, build when /spoofax-trigger job builds.
   properties([
-    buildDiscarder(logRotator(numToKeepStr: '1'))
+    buildDiscarder(logRotator(numToKeepStr: '3'))
   , disableConcurrentBuilds()
   , pipelineTriggers([upstream(threshold: hudson.model.Result.SUCCESS, upstreamProjects: '/spoofax-trigger')])
   ])
@@ -32,7 +32,9 @@ node {
   stage('Echo') {
     // Print important variables and versions for debugging purposes.
     echo "Job ${jobName} (base: ${jobBaseName}) on branch ${branchName}"
+    exec 'env'
     exec 'bash --version'
+    exec 'git --version'
     exec 'python3 --version'
     exec 'pip3 --version'
     exec 'java -version'
@@ -68,8 +70,6 @@ node {
         sshagent([gitSshCredentials]) {
           // Update 'releng' submodule. Must be done first because 'releng' hosts the build script used in the next command.
           exec 'git submodule update --init --remote --recursive -- releng'
-          // Switch to SSH remotes.
-          exec './b set-remote -s'
           // Update submodules to latest remote.
           exec './b clean-update -y'
         }
@@ -113,15 +113,11 @@ node {
     } else {
       stage('Build and Deploy') {
         def eclipseQualifier = exec_stdout('./b qualifier')
-        // Set the local Maven repository to an executor-local directory, to prevent concurrent build issues.
-        def mavenLocalRepo = "${env.JENKINS_HOME}/m2repos/${env.EXECUTOR_NUMBER}"
         // Create the build command to run.
         // Disable Gradle native libraries and daemon because they do not work on our buildfarm.
         def command = """
         ./b -p jenkins.properties -p build.properties build all eclipse-instances \
-            --eclipse-qualifier ${eclipseQualifier} \
-            --maven-local-repo '${mavenLocalRepo}' \
-            --maven-clean-local-repo
+            --eclipse-qualifier ${eclipseQualifier}
         """
         // Get Maven configuration and credentials from provided settings.
         withMaven(mavenSettingsConfig: mavenConfigId, globalMavenSettingsConfig: mavenGlobalConfigId) {
