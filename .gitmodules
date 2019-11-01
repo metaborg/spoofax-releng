@@ -17,7 +17,7 @@
 [submodule "spoofax"]
   path = spoofax
   url = https://github.com/metaborg/spoofax.git
-  branch = master
+  branch = develop/statix/incremental
 [submodule "releng"]
   path = releng
   url = https://github.com/metaborg/spoofax-deploy.git
@@ -37,7 +37,7 @@
 [submodule "nabl"]
   path = nabl
   url = https://github.com/metaborg/nabl.git
-  branch = master
+  branch = develop/statix/incremental
 [submodule "ts"]
   path = ts
   url = https://github.com/metaborg/ts.git
