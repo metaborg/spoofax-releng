@@ -37,7 +37,7 @@
 [submodule "nabl"]
   path = nabl
   url = https://github.com/metaborg/nabl.git
-  branch = master
+  branch = develop/statix/random-generation
 [submodule "ts"]
   path = ts
   url = https://github.com/metaborg/ts.git
@@ -81,4 +81,4 @@
 [submodule "flowspec"]
 	path = flowspec
 	url = https://github.com/metaborg/flowspec.git
-  branch = master
+  branch = develop/statix/random-generation
