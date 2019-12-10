@@ -81,4 +81,4 @@
 [submodule "flowspec"]
 	path = flowspec
 	url = https://github.com/metaborg/flowspec.git
-  branch = master
+  branch = develop/statix/incremental
