@@ -38,7 +38,7 @@ node {
     exec 'python3 --version'
     exec 'pip3 --version'
     exec 'java -version'
-    //exec 'javac -version'
+    exec 'javac -version'
     exec 'mvn --version'
   }
 
