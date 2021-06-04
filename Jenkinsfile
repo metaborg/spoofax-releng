@@ -27,7 +27,7 @@ if(isTrigger) {
 }
 
 
-node {
+node('spoofax-buildenv-jenkins') {
   stage('Echo') {
     // Print important variables and versions for debugging purposes.
     echo "Job ${jobName} (base: ${jobBaseName}) on branch ${branchName}"
