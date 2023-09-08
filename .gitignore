@@ -1,8 +1,33 @@
-/.cache
 /.qualifier
 /.buildenv
-/.m2
 /.eclipsegen
 /.local-deploy-repository
 /dist
-/.idea
+
+# Maven
+/target/
+/.m2
+
+# Intellij
+.idea/*
+!.idea/icon.svg
+!.idea/icon_dark.svg
+!.idea/icon.png
+!.idea/icon_dark.png
+!.idea/icon.ai
+!.idea/icon_dark.ai
+*.iws
+/out/
+*.iml
+*.ipr
+
+# Gradle
+.gradle
+gradle-app.setting
+!gradle-wrapper.jar
+.gradletasknamecache
+/build/
+
+# Misc
+/.cache
+.DS_Store
