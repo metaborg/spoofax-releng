@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+./gradlew -c repo.settings.gradle.kts $*
