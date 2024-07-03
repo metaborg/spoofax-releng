@@ -28,6 +28,12 @@ if(isTrigger) {
 
 
 node('spoofax-buildenv-jenkins') {
+  stage('Setup Java 11') {
+    // This is exported in the JAVA11_HOME env variable in the Spoofax Docker image
+    exec 'export PATH="$JAVA11_HOME/bin:$PATH"'
+    exec 'export JAVA_HOME="$JAVA11_HOME"'
+  }
+
   stage('Echo') {
     // Print important variables and versions for debugging purposes.
     echo "Job ${jobName} (base: ${jobBaseName}) on branch ${branchName}"
