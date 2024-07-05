@@ -29,8 +29,6 @@ if(isTrigger) {
 
 node('spoofax-buildenv-jenkins') {
   stage('Setup Java 11') {
-    // .bashrc is not automatically sourced, even when running Bash, because Jenkins runs this as an SH script
-    exec 'source /etc/bash.bashrc'
     // This is exported in the JAVA11_HOME env variable in the Spoofax Docker image
     exec 'export PATH="$JAVA11_HOME/bin:$PATH"'
     exec 'export JAVA_HOME="$JAVA11_HOME"'
