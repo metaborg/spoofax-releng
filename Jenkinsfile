@@ -1,5 +1,3 @@
-source ~/.bashrc
-
 // Jenkins' env.JOB_BASE_NAME returns the wrong name: parse our own.
 def jobName = env.JOB_NAME
 def jobBaseSlashPos = jobName.indexOf('/')
@@ -31,6 +29,7 @@ if(isTrigger) {
 
 node('spoofax-buildenv-jenkins') {
   stage('Setup Java 11') {
+    exec 'source ~/.bashrc'
     // This is exported in the JAVA11_HOME env variable in the Spoofax Docker image
     exec 'export PATH="$JAVA11_HOME/bin:$PATH"'
     exec 'export JAVA_HOME="$JAVA11_HOME"'
