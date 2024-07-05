@@ -1,3 +1,5 @@
+source ~/.bashrc
+
 // Jenkins' env.JOB_BASE_NAME returns the wrong name: parse our own.
 def jobName = env.JOB_NAME
 def jobBaseSlashPos = jobName.indexOf('/')
