@@ -29,6 +29,7 @@ if(isTrigger) {
 
 node('spoofax-buildenv-jenkins') {
   jdk = tool name: 'JDK 11'
+  env.JAVA_HOME = "${jdk}"
 
   stage('Echo') {
     // Print important variables and versions for debugging purposes.
@@ -38,8 +39,8 @@ node('spoofax-buildenv-jenkins') {
     exec 'git --version'
     exec 'python3 --version'
     exec 'pip3 --version'
-    exec 'java -version'
-    exec 'javac -version'
+    exec '$JAVA_HOME/bin/java -version'
+    exec '$JAVA_HOME/bin/javac -version'
     exec 'mvn --version'
   }
 
