@@ -1,6 +1,3 @@
-pipeline {
-  agent any
-  stages {
 // Jenkins' env.JOB_BASE_NAME returns the wrong name: parse our own.
 def jobName = env.JOB_NAME
 def jobBaseSlashPos = jobName.indexOf('/')
@@ -28,6 +25,11 @@ if(isTrigger) {
   // Keep last 3 builds.
   properties([buildDiscarder(logRotator(artifactNumToKeepStr: '3')), disableConcurrentBuilds(), pipelineTriggers([])])
 }
+
+
+pipeline {
+  agent any
+  stages {
 
 // node('spoofax-buildenv-jenkins') {
   stage('Setup Java 11') {
@@ -162,6 +164,9 @@ if(isTrigger) {
 
   notifySuccess(slackChannel)
 
+  }
+}
+
 
 // Utility functions.
 def exec_stdout(String cmd) {
@@ -216,7 +221,5 @@ def notifySuccess(String channel) {
   def prevBuild = currentBuild.getPreviousBuild()
   if(prevBuild && !'SUCCESS'.equals(prevBuild.getResult())) {
     slackSend channel: channel, color: 'good', message: createMessage('fixed :party_parrot:')
-  }
-}
   }
 }
