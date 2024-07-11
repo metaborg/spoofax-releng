@@ -44,8 +44,8 @@ node('spoofax-buildenv-jenkins') {
     exec 'git --version'
     exec 'python3 --version'
     exec 'pip3 --version'
-    exec '$JAVA_HOME/bin/java -version'
-    exec '$JAVA_HOME/bin/javac -version'
+    exec "$JAVA_HOME/bin/java -version"
+    exec "$JAVA_HOME/bin/javac -version"
     exec 'mvn --version'
   }
 
